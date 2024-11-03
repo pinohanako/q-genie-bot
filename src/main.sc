@@ -28,7 +28,7 @@ theme: /
         q!: $regex</start>
         script:
             $jsapi.startSession();
-        a: Начнём
+        a: Я готов играть! Назови столицу
         
     state: Hello
         intent!: /привет

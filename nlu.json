@@ -54,15 +54,15 @@
     "enabled" : true,
     "shared" : false,
     "phrases" : [ {
-      "text" : "привет"
+      "text" : "Привет"
     }, {
-      "text" : "приветики"
+      "text" : "Приветики"
     }, {
-      "text" : "здравствуй"
+      "text" : "Здравствуй"
     }, {
-      "text" : "здравствуйте"
+      "text" : "Здравствуйте"
     }, {
-      "text" : "хало"
+      "text" : "Хало"
     } ],
     "classificationRules" : {
       "refs" : [ ]

@@ -2,11 +2,11 @@
     <test-case>        
          <q>/start</q>
          <a state = "/Start"/>
-         <q>привет</q>
+         <q>Привет</q>
          <a state = "Hello"/>
-         <q>пока</q>
+         <q>Пока</q>
          <a state = "Bye"/>
-         <q>как дела</q>
+         <q>Как дела</q>
          <a state = "NoMatch"/>
 #        <q>приветствую</q>
 #        <a>Я не понял. Вы сказали: приветствую</a>
