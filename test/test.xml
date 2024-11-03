@@ -3,13 +3,13 @@
   # Реплика пользователя обозначается тегом <q>, а реакция <a>.
     <test-case>        
         <q>/start</q>
-        <a state = "/Start"/>
+        <a state = "/Start"/></a>
         <q>Привет</q>
-        <a state = "/Hello"/>
+        <a state = "/Hello"/></a>
         <q>Пока</q>
-        <a state = "/Bye"/>
+        <a state = "/Bye"/></a>
         <q>Как дела</q>
-        <a state = "/NoMatch"/>
+        <a state = "/NoMatch"/></a>
         <q>Москва</q>
         <a>Столица: Москва</a>
     </test-case>
