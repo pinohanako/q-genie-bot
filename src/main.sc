@@ -87,7 +87,7 @@ theme: /
 
     state: NoMatch
         event!: noMatch
-        a: Я не понял. Вы сказали: {{$request.query}}
+        a: Вы сказали: {{$request.query}}, но я предназначен только для игр!
 
     state: reset
         q!: reset
