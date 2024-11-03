@@ -47,9 +47,10 @@ theme: /
             $reactions.answer("Какой город является столицей " + country + "?");
             $reactions.answer("(" + capital + ")");
             $reactions.wait();
+
     state: CheckAnswer
-    intent!: /check_answer
-    script:
+        intent!: /check_answer
+        script:
             var userAnswer = $caila.inflect($parseTree._answer, ["nomn"]);
             if (userAnswer.toLowerCase() === capital.toLowerCase()) {
                 $reactions.answer("Правильно! " + capital + " является столицей " + country + ".");
@@ -60,8 +61,8 @@ theme: /
             }
 
     state: EndGame
-    intent!: /end_game
-    script:
+        intent!: /end_game
+        script:
         var correctAnswers = $memory.get("correctAnswers") || 0;
         $reactions.answer("Игра завершена! Ты правильно назвал " + correctAnswers + " столиц.");
 
