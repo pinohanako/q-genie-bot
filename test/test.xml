@@ -3,9 +3,9 @@
          <q>/start</q>
          <a state = "/Start"/>
          <q>Привет</q>
-         <a state = "Hello"/>
+         <a state = "/Hello"/>
          <q>Пока</q>
-         <a state = "Bye"/>
+         <a state = "/Bye"/>
          <q>Как дела</q>
          <a state = "NoMatch"/>
 #        <q>приветствую</q>
