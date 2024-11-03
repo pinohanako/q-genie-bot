@@ -33,7 +33,11 @@ theme: /
     state: Hello
         intent!: /привет
         a: Привет-привет
-
+        
+    state: Hello
+        intent!: /пока
+        a: Пока-пока
+        
     state: CityPattern
         q: * $Capital *
         a: Столица: {{$parseTree._Capital.name}}
@@ -43,7 +47,7 @@ theme: /
         a: Слово из справочника: {{$parseTree._Word.word}}
 
     state: NoMatch
-        event!: noMatch
+        event!: noMatch # boMathch - событие, которое активируется, а event! - глобальный тег
         a: Я не понял. Вы сказали: {{$request.query}}
 
     state: reset

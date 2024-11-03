@@ -1,7 +1,7 @@
 {
   "project" : {
-    "id" : "just_ai_games_test-256111891-TlU",
-    "name" : "just_ai_games_test-256111891-TlU",
+    "id" : "qgenie-1000177898-PrA",
+    "name" : "qgenie-1000177898-PrA",
     "folder" : "/platform"
   },
   "settings" : {
@@ -23,6 +23,22 @@
     }
   },
   "intents" : [ {
+    "path" : "/стоп",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "стоп"
+    }, {
+      "text" : "прекрати"
+    }, {
+      "text" : "хватит"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
     "path" : "/пока",
     "enabled" : true,
     "shared" : false,
@@ -39,10 +55,19 @@
     "shared" : false,
     "phrases" : [ {
       "text" : "привет"
+    }, {
+      "text" : "приветики"
+    }, {
+      "text" : "здравствуй"
+    }, {
+      "text" : "здравствуйте"
+    }, {
+      "text" : "хало"
     } ],
     "classificationRules" : {
       "refs" : [ ]
     },
+    "patterns" : [ ],
     "priority" : 0
   } ],
   "entities" : [ ],
