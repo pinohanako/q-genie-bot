@@ -34,7 +34,7 @@ theme: /
         intent!: /привет
         a: Привет-привет
         
-    state: Hello
+    state: Buy
         intent!: /пока
         a: Пока-пока
         
