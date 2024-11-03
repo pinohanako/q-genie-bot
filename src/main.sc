@@ -36,46 +36,34 @@ theme: /
     state: Buy
         intent!: /пока
         a: Пока-пока
-        
-    state: Game
-        q: $regex</game>
+
+    state: AskCapital
+        intent!: /ask_capital
         script:
-            var geographyData = $csv.read("geography-ru.csv");
-            var randomIndex = Math.floor(Math.random() * geographyData.length);
-            var question = "Какой город является столицей " + geographyData[randomIndex]["Государство"] + "?";
-            var correctAnswer = geographyData[randomIndex]["Столица"];
-        a: {{question}} ({{correctAnswer}}).
-
-    state: PlayerAnswer
-        q: $Word
-        a: {{$parseTree._Word.word}}
-
+            var data = $csv.read("geography-ru.csv");
+            var randomIndex = Math.floor(Math.random() * data.length);
+            var country = data[randomIndex][0];
+            var capital = data[randomIndex][1];
+            $reactions.answer("Какой город является столицей " + country + "?");
+            $reactions.answer("(" + capital + ")");
+            $reactions.wait();
     state: CheckAnswer
-        script:
-            var playerAnswer = $parseTree._Word.word;
-            var isCorrect = playerAnswer.toLowerCase() === correctAnswer.toLowerCase();
-            if (isCorrect) {
-                $jsapi.say("Правильно! Вы угадали столицу.");
+    intent!: /check_answer
+    script:
+            var userAnswer = $caila.inflect($parseTree._answer, ["nomn"]);
+            if (userAnswer.toLowerCase() === capital.toLowerCase()) {
+                $reactions.answer("Правильно! " + capital + " является столицей " + country + ".");
+                $reactions.wait();
             } else {
-                $jsapi.say("Ошибка! Правильный ответ: " + correctAnswer + ". Попробуем еще раз.");
+                $reactions.answer("Ошибка! Правильный ответ: " + capital + ".");
+                $reactions.wait();
             }
 
-    state: ContinueGame
-        q: $regex</continue>
-        script:
-           var geographyData = $csv.read("geography-ru.csv");
-           var randomIndex = Math.floor(Math.random() * geographyData.length);
-           var question = "Какой город является столицей " + geographyData[randomIndex]["Государство"] + "?";
-           var correctAnswer = geographyData[randomIndex]["Столица"];
-        go!: /Game
-
     state: EndGame
-        q: $regex</end>
-        script:
-             $jsapi.say("Спасибо за игру! Вы угадали X столиц из Y.");
-             $session = {};
-             $client = {};
-        go!: /Start
+    intent!: /end_game
+    script:
+        var correctAnswers = $memory.get("correctAnswers") || 0;
+        $reactions.answer("Игра завершена! Ты правильно назвал " + correctAnswers + " столиц.");
 
     state: CityPattern
         q: * $Capital *
@@ -87,7 +75,7 @@ theme: /
 
     state: NoMatch
         event!: noMatch
-        a: Вы сказали: {{$request.query}}, но я предназначен только для игр!
+        a: Я предназначен только для игр! Не хотелось бы отходить от темы
 
     state: reset
         q!: reset
