@@ -55,14 +55,6 @@
     "shared" : false,
     "phrases" : [ {
       "text" : "Привет"
-    }, {
-      "text" : "Приветики"
-    }, {
-      "text" : "Здравствуй"
-    }, {
-      "text" : "Здравствуйте"
-    }, {
-      "text" : "Хало"
     } ],
     "classificationRules" : {
       "refs" : [ ]
