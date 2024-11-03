@@ -79,14 +79,14 @@ theme: /
 
     state: CityPattern
         q: * $Capital *
-        a: Столица: {{$parseTree._Capital.name}} #переменная, которая будет заменена на фактическое значение, введенное пользователем
+        a: Столица: {{$parseTree._Capital.name}}
         
     state: Text
         q: $Word
         a: Слово из справочника: {{$parseTree._Word.word}}
 
     state: NoMatch
-        event!: noMatch # boMathch - событие, которое активируется, а event! - глобальный тег
+        event!: noMatch
         a: Я не понял. Вы сказали: {{$request.query}}
 
     state: reset
