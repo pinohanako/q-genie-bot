@@ -23,24 +23,63 @@ patterns:
         };
 
 theme: /
-
     state: Start
         q!: $regex</start>
         script:
             $jsapi.startSession();
-        a: Я готов играть! Назови столицу
+        a: Привет! Я могу поиграть, попробуете угадать столицу? Я буду называть страну, а вас попрошу написать соответствующий город. Начнем!
         
     state: Hello
         intent!: /привет
-        a: Привет-привет
+        a: Привет-привет, уже виделись :)
         
     state: Buy
         intent!: /пока
         a: Пока-пока
         
+    state: Game
+        q: $regex</game>
+        script:
+            var geographyData = $csv.read("geography-ru.csv");
+            var randomIndex = Math.floor(Math.random() * geographyData.length);
+            var question = "Какой город является столицей " + geographyData[randomIndex]["Государство"] + "?";
+            var correctAnswer = geographyData[randomIndex]["Столица"];
+        a: {{question}} ({{correctAnswer}}).
+
+    state: PlayerAnswer
+        q: $Word
+        a: {{$parseTree._Word.word}}
+
+    state: CheckAnswer
+        script:
+            var playerAnswer = $parseTree._Word.word;
+            var isCorrect = playerAnswer.toLowerCase() === correctAnswer.toLowerCase();
+            if (isCorrect) {
+                $jsapi.say("Правильно! Вы угадали столицу.");
+            } else {
+                $jsapi.say("Ошибка! Правильный ответ: " + correctAnswer + ". Попробуем еще раз.");
+            }
+
+    state: ContinueGame
+        q: $regex</continue>
+        script:
+           var geographyData = $csv.read("geography-ru.csv");
+           var randomIndex = Math.floor(Math.random() * geographyData.length);
+           var question = "Какой город является столицей " + geographyData[randomIndex]["Государство"] + "?";
+           var correctAnswer = geographyData[randomIndex]["Столица"];
+        go!: /Game
+
+    state: EndGame
+        q: $regex</end>
+        script:
+             $jsapi.say("Спасибо за игру! Вы угадали X столиц из Y.");
+             $session = {};
+             $client = {};
+        go!: /Start
+
     state: CityPattern
         q: * $Capital *
-        a: Столица: {{$parseTree._Capital.name}}
+        a: Столица: {{$parseTree._Capital.name}} #переменная, которая будет заменена на фактическое значение, введенное пользователем
         
     state: Text
         q: $Word
