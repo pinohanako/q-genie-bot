@@ -23,7 +23,7 @@ patterns:
         };
 
 theme: /
-    state: Start
+    state: Sstart
         q!: $regex</start>
         script:
             $jsapi.startSession();
