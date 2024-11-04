@@ -25,15 +25,15 @@ patterns:
         var id = $parseTree.HangmanGameData[0].value;
         return $HangmanGameData[id].value;
         };
-    $State = $entity<Pairs> || converter = function ($parseTree) {
-        var capital = $parseTree.Pairs[0].value;
-        for (var i = 0; i < $Pairs.length; i++) {
-            if ($Pairs[i][1] === capital) {
-                return $Pairs[i][0];
-            }
-        }
-        return null;
-    };
+#    $State = $entity<Pairs> || converter = function ($parseTree) {
+#        var capital = $parseTree.Pairs[0].value;
+#        for (var i = 0; i < $Pairs.length; i++) {
+#            if ($Pairs[i][1] === capital) {
+#                return $Pairs[i][0];
+#            }
+#        }
+#        return null;
+#    };
 
 theme: /
     state: Sstart
