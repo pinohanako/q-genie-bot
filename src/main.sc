@@ -11,8 +11,6 @@ require: common.js
 require: geography-ru.csv
     name = pairs
     var = $pairs
-/require: where/where.sc
-/    module = sys.zb-common
 
 # Для игры Виселица
 require: hangmanGameData.csv
