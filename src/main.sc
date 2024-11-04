@@ -11,7 +11,7 @@ require: common.js
 require: where/where.sc
     module = sys.zb-common
     
-require: functons.js
+require: functions.js
     module = sys.zb-common
 
 require: geography-ru.csv
