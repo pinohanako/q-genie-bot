@@ -60,7 +60,7 @@ theme: /
             var pair = Pairs[Math.floor(Math.random() * Pairs.length)];
             usedPairs.push(pair);
             $reactions.answer("Какая столица у государства " + pair[0] + "?");
-
+ 
     state: EndGame
         intent!: /end_game
         script:
