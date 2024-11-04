@@ -38,27 +38,46 @@ theme: /
         a: Пока-пока
 
     state: AskCapital
-        intent!: /ask_capital
+        q: * $Capital *
         script:
-            var data = $csv.read("geography-ru.csv");
-            var randomIndex = Math.floor(Math.random() * data.length);
-            var country = data[randomIndex][0];
-            var capital = data[randomIndex][1];
-            $reactions.answer("Какой город является столицей " + country + "?");
-            $reactions.answer("(" + capital + ")");
-            $reactions.wait();
+            var pairs = $csv.read("geography-ru.csv");
+            // Счетчик угаданных пар
+            var correctAnswers = 0;
+            // Массив использованных пар
+            var usedPairs = [];
 
-    state: CheckAnswer
-        intent!: /check_answer
-        script:
-            var userAnswer = $caila.inflect($parseTree._answer, ["nomn"]);
-            if (userAnswer.toLowerCase() === capital.toLowerCase()) {
-                $reactions.answer("Правильно! " + capital + " является столицей " + country + ".");
-                $reactions.wait();
-            } else {
-                $reactions.answer("Ошибка! Правильный ответ: " + capital + ".");
-                $reactions.wait();
+            // Игровой цикл
+            while (usedPairs.length < pairs.length) {
+                // Случайным образом выбираем пару, которая еще не использовалась
+                var pair;
+                do {
+                    pair = pairs[Math.floor(Math.random() * pairs.length)];
+                } while (usedPairs.includes(pair));
+
+                // Задаем вопрос игроку
+                var guess = prompt("Какая столица у государства " + pair[0] + "?");
+
+                // Проверяем, содержит ли ответ только одну столицу
+                if (guess.split(" ").length === 1) {
+                    // Сравниваем ответ игрока с фактической столицей
+                    if (pair[1] === guess) {
+                        // Если ответ правильный, увеличиваем счетчик угаданных пар
+                        correctAnswers++;
+                    } else {
+                        // Если ответ неверный, выводим сообщение об ошибке
+                        alert("Неверный ответ! Попробуйте еще раз.");
+                    }
+                } else {
+                    // Если ответ содержит несколько столиц, выводим сообщение об ошибке
+                    alert("Эй, придется определиться! Перебором дело не пойдет");
+                }
+
+                // Добавляем использованную пару в массив usedPairs
+                usedPairs.push(pair);
             }
+
+            // Отображаем количество угаданных столиц и поздравляем игрока
+            alert("Вы угадали все столицы! Поздравляем!");
 
     state: EndGame
         intent!: /end_game
@@ -66,9 +85,9 @@ theme: /
         var correctAnswers = $memory.get("correctAnswers") || 0;
         $reactions.answer("Игра завершена! Ты правильно назвал " + correctAnswers + " столиц.");
 
-    state: CityPattern
-        q: * $Capital *
-        a: Столица: {{$parseTree._Capital.name}}
+    // state: CityPattern
+    //    q: * $Capital *
+    //    a: Столица: {{$parseTree._Capital.name}}
         
     state: Text
         q: $Word
