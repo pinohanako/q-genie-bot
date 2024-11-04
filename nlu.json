@@ -77,10 +77,6 @@
     "shared" : false,
     "phrases" : [ {
       "text" : "пока"
-    }, {
-      "text" : "до свидания"
-    }, {
-      "text" : "прощай"
     } ],
     "classificationRules" : {
       "refs" : [ ]
@@ -123,17 +119,9 @@
     "enabled" : true,
     "shared" : false,
     "phrases" : [ {
-      "text" : "готов"
-    }, {
       "text" : "начать"
     }, {
-      "text" : "начни"
-    }, {
       "text" : "старт"
-    }, {
-      "text" : "пуск"
-    }, {
-      "text" : "давай"
     } ],
     "classificationRules" : {
       "refs" : [ ]
