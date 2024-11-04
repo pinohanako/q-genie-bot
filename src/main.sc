@@ -11,7 +11,7 @@ require: common.js
 require: where/where.sc
     module = sys.zb-common
 
-require: src/geography-ru.csv
+require: geography-ru.csv
     name = Pairs
     var = $Pairs
 
