@@ -58,7 +58,7 @@ theme: /
             // Счетчик угаданных пар и массив использованных пар
             // var correctAnswers = 0;
             var usedPairs = [];
-            var pair = $Pairs[Math.floor(Math.random() * $Pairs.length)];
+            var pair = Pairs[Math.floor(Math.random() * Pairs.length)];
             usedPairs.push(pair);
             $reactions.answer("Какая столица у государства " + pair[1] + "?");
  
