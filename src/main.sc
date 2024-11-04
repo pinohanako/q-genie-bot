@@ -78,12 +78,6 @@ theme: /
 
             // Отображаем количество угаданных столиц и поздравляем игрока
             alert("Вы угадали все столицы! Поздравляем!");
-
-    state: EndGame
-        intent!: /end_game
-        script:
-        var correctAnswers = $memory.get("correctAnswers") || 0;
-        $reactions.answer("Игра завершена! Ты правильно назвал " + correctAnswers + " столиц.");
         
     state: Text
         q: $Word
