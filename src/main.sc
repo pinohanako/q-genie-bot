@@ -84,10 +84,6 @@ theme: /
         script:
         var correctAnswers = $memory.get("correctAnswers") || 0;
         $reactions.answer("Игра завершена! Ты правильно назвал " + correctAnswers + " столиц.");
-
-    // state: CityPattern
-    //    q: * $Capital *
-    //    a: Столица: {{$parseTree._Capital.name}}
         
     state: Text
         q: $Word
