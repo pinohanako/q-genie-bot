@@ -8,6 +8,9 @@ require: common.js
     module = sys.zb-common
     
 # Для игры Назови столицу
+require: where/where.sc
+    module = sys.zb-common
+
 require: geography-ru.csv
     name = pairs
     var = $pairs
@@ -52,13 +55,10 @@ theme: /
         script:
             var pairs = $parseTree.pairs[0].value
             // Счетчик угаданных пар и массив использованных пар
-            var correctAnswers = 0;
+            // var correctAnswers = 0;
             var usedPairs = [];
-            // Случайным образом выбираем пару
             var pair = pairs[Math.floor(Math.random() * pairs.length)];
-            // Добавляем случайно отобранную пару в массив usedPairs
             usedPairs.push(pair);
-            // Бот задает вопрос
             $reactions.answer("Какая столица у государства " + pair[0] + "?");
 
     state: Text
