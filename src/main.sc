@@ -14,6 +14,7 @@ require: where/where.sc
 require: geography-ru.csv
     name = Pairs
     var = $Pairs
+    strict = true
 
 # Для игры Виселица
 require: hangmanGameData.csv
@@ -25,15 +26,15 @@ patterns:
         var id = $parseTree.HangmanGameData[0].value;
         return $HangmanGameData[id].value;
         };
-#    $State = $entity<Pairs> || converter = function ($parseTree) {
-#        var capital = $parseTree.Pairs[0].value;
-#        for (var i = 0; i < $Pairs.length; i++) {
-#            if ($Pairs[i][1] === capital) {
-#                return $Pairs[i][0];
-#            }
-#        }
-#        return null;
-#    };
+    $State = $entity<Pairs> || converter = function ($parseTree) {
+        var capital = $parseTree.Pairs[0].value;
+        for (var i = 0; i < $Pairs.length; i++) {
+            if ($Pairs[i][1] === capital) {
+                return $Pairs[i][0];
+            }
+        }
+        return null;
+    };
 
 theme: /
     state: Sstart
@@ -54,11 +55,10 @@ theme: /
         intent!: /начатьИгру
         script:
             // var Pairs = $parseTree.Pairs
-            
-            // Счетчик угаданных пар и массив использованных пар
-            // var correctAnswers = 0;
+            // Массив использованных пар
+
             var usedPairs = [];
-            var pair = Pairs[Math.floor(Math.random() * Pairs.length)];
+            var pair = $Pairs[Math.floor(Math.random() * $Pairs.length)];
             usedPairs.push(pair);
             $reactions.answer("Какая столица у государства " + pair[1] + "?");
  
