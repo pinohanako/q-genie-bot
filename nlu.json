@@ -24,6 +24,7 @@
   },
   "intents" : [ {
     "path" : "/стоп",
+    "description" : "завершить игру и вывести количество угаданных ответов",
     "enabled" : true,
     "shared" : false,
     "phrases" : [ {
@@ -110,6 +111,29 @@
       "text" : "Приветики"
     }, {
       "text" : "Приветули"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "path" : "/начатьИгру",
+    "description" : "начать игру",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "готов"
+    }, {
+      "text" : "начать"
+    }, {
+      "text" : "начни"
+    }, {
+      "text" : "старт"
+    }, {
+      "text" : "пуск"
+    }, {
+      "text" : "давай"
     } ],
     "classificationRules" : {
       "refs" : [ ]

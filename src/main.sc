@@ -37,48 +37,20 @@ theme: /
         intent!: /пока
         a: Пока-пока
 
-    state: AskCapital
-        q: * $Capital *
+    state: StartGame
+        intent!: /начатьИгру
         script:
-            var pairs = $csv.read("geography-ru.csv");
-            // Счетчик угаданных пар
+            var pairs = loadDataFromCSV("geography-ru.csv");
+            // Счетчик угаданных пар и массив использованных пар
             var correctAnswers = 0;
-            // Массив использованных пар
             var usedPairs = [];
+            // Случайным образом выбираем пару
+            var pair = pairs[Math.floor(Math.random() * pairs.length)];
+            // Добавляем случайно отобранную пару в массив usedPairs
+            usedPairs.push(pair);
+            // Бот задает вопрос
+            $reactions.answer("Какая столица у государства " + pair[0] + "?");
 
-            // Игровой цикл
-            while (usedPairs.length < pairs.length) {
-                // Случайным образом выбираем пару, которая еще не использовалась
-                var pair;
-                do {
-                    pair = pairs[Math.floor(Math.random() * pairs.length)];
-                } while (usedPairs.includes(pair));
-
-                // Задаем вопрос игроку
-                var guess = prompt("Какая столица у государства " + pair[0] + "?");
-
-                // Проверяем, содержит ли ответ только одну столицу
-                if (guess.split(" ").length === 1) {
-                    // Сравниваем ответ игрока с фактической столицей
-                    if (pair[1] === guess) {
-                        // Если ответ правильный, увеличиваем счетчик угаданных пар
-                        correctAnswers++;
-                    } else {
-                        // Если ответ неверный, выводим сообщение об ошибке
-                        alert("Неверный ответ! Попробуйте еще раз.");
-                    }
-                } else {
-                    // Если ответ содержит несколько столиц, выводим сообщение об ошибке
-                    alert("Эй, придется определиться! Перебором дело не пойдет");
-                }
-
-                // Добавляем использованную пару в массив usedPairs
-                usedPairs.push(pair);
-            }
-
-            // Отображаем количество угаданных столиц и поздравляем игрока
-            alert("Вы угадали все столицы! Поздравляем!");
-        
     state: Text
         q: $Word
         a: Слово из справочника: {{$parseTree._Word.word}}
