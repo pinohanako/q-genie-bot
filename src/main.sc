@@ -55,7 +55,7 @@ theme: /
             usedPairs.push(pair);
             $reactions.answer("Какая столица у государства " + pair + "?");
 
-    // Состояние для проверки ответа игрока
+         // Состояние для проверки ответа игрока
     state: CheckCapital
         q: * $Capital *
         script:
