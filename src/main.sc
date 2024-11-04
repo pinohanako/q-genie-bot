@@ -54,9 +54,9 @@ theme: /
             // Бот задает вопрос
             $reactions.answer("Какая столица у государства " + pair[0] + "?");
 
-/    state: Text
-/        q: $Word
-/        a: Слово из справочника: {{$parseTree._Word.word}}
+    state: Text
+        q: $Word
+        a: Слово из справочника: {{$parseTree._Word.word}}
 
     state: EndGame
         intent!: /end_game
