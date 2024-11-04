@@ -53,7 +53,7 @@ theme: /
     state: StartGame
         intent!: /начатьИгру
         script:
-            var Pairs = $parseTree.Pairs[1].value
+            var Pairs = $parseTree.Pairs.value
             
             // Счетчик угаданных пар и массив использованных пар
             // var correctAnswers = 0;
