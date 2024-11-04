@@ -48,7 +48,7 @@ theme: /
             // var Pairs = $parseTree.Pairs
             // Массив использованных пар 
             var usedPairs = [];
-            var pair = $Pairs.get(name);
+            var pair = $Pairs;
             usedPairs.push(pair);
             $reactions.answer("Какая столица у государства " + pair + "?");
 
@@ -93,10 +93,6 @@ theme: /
     state: NoMatch
         event!: noMatch
         a: Я предназначен только для игр! Не хотелось бы отходить от темы
-
-    state: Text
-        q: $Word
-        a: Слово из справочника: {{$parseTree._Word.word}}
 
     state: reset
         q!: reset
