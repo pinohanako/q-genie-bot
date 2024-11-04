@@ -55,6 +55,12 @@ theme: /
         q: $Word
         a: Слово из справочника: {{$parseTree._Word.word}}
 
+    state: EndGame
+        intent!: /end_game
+        script:
+             var correctAnswers = $memory.get("correctAnswers") || 0;
+             $reactions.answer("Игра завершена! Ты правильно назвал " + correctAnswers + " столиц.")
+
     state: NoMatch
         event!: noMatch
         a: Я предназначен только для игр! Не хотелось бы отходить от темы
