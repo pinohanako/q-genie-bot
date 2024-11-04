@@ -53,13 +53,14 @@ theme: /
     state: StartGame
         intent!: /начатьИгру
         script:
-            var Pairs = $parseTree.Pairs[0].value
+            var Pairs = $parseTree.Pairs[1].value
+            
             // Счетчик угаданных пар и массив использованных пар
             // var correctAnswers = 0;
             var usedPairs = [];
             var pair = Pairs[Math.floor(Math.random() * Pairs.length)];
             usedPairs.push(pair);
-            $reactions.answer("Какая столица у государства " + pair[0] + "?");
+            $reactions.answer("Какая столица у государства " + pair[1] + "?");
  
     state: EndGame
         intent!: /end_game
