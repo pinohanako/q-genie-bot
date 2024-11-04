@@ -25,11 +25,11 @@ patterns:
         var id = $parseTree.HangmanGameData[0].value;
         return $HangmanGameData[id].value;
         };
-    $State = $entity<pairs> || converter = function ($parseTree) {
-        var capital = $parseTree.pairs[0].value;
-        for (var i = 0; i < $pairs.length; i++) {
-            if ($pairs[i][1] === capital) {
-                return $pairs[i][0];
+    $State = $entity<Pairs> || converter = function ($parseTree) {
+        var capital = $parseTree.Pairs[0].value;
+        for (var i = 0; i < $Pairs.length; i++) {
+            if ($Pairs[i][1] === capital) {
+                return $Pairs[i][0];
             }
         }
         return null;
@@ -53,11 +53,11 @@ theme: /
     state: StartGame
         intent!: /начатьИгру
         script:
-            var pairs = $parseTree.pairs[0].value
+            var Pairs = $parseTree.Pairs[0].value
             // Счетчик угаданных пар и массив использованных пар
             // var correctAnswers = 0;
             var usedPairs = [];
-            var pair = pairs[Math.floor(Math.random() * pairs.length)];
+            var pair = Pairs[Math.floor(Math.random() * Pairs.length)];
             usedPairs.push(pair);
             $reactions.answer("Какая столица у государства " + pair[0] + "?");
 
