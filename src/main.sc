@@ -22,6 +22,15 @@ patterns:
         var id = $parseTree.HangmanGameData[0].value;
         return $HangmanGameData[id].value;
         };
+    $State = $entity<pairs> || converter = function ($parseTree) {
+        var capital = $parseTree.pairs[0].value;
+        for (var i = 0; i < $pairs.length; i++) {
+            if ($pairs[i][1] === capital) {
+                return $pairs[i][0];
+            }
+        }
+        return null;
+    };
 
 theme: /
     state: Sstart
