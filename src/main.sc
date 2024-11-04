@@ -10,9 +10,6 @@ require: common.js
 # Для игры Назови столицу
 require: where/where.sc
     module = sys.zb-common
-    
-require: functions.js
-    module = sys.zb-common
 
 require: geography-ru.csv
     name = Pairs
