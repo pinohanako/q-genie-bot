@@ -7,9 +7,12 @@ require: text/text.sc
 require: common.js
     module = sys.zb-common
     
-# Для игры Назови столицу    
-require: where/where.sc
-    module = sys.zb-common
+# Для игры Назови столицу
+require: geography-ru.csv
+    name = pairs
+    var = $pairs
+/require: where/where.sc
+/    module = sys.zb-common
 
 # Для игры Виселица
 require: hangmanGameData.csv
@@ -40,7 +43,7 @@ theme: /
     state: StartGame
         intent!: /начатьИгру
         script:
-            var pairs = loadDataFromCSV("geography-ru.csv");
+            var pairs = $parseTree.pairs[0].value
             // Счетчик угаданных пар и массив использованных пар
             var correctAnswers = 0;
             var usedPairs = [];
@@ -51,9 +54,9 @@ theme: /
             // Бот задает вопрос
             $reactions.answer("Какая столица у государства " + pair[0] + "?");
 
-    state: Text
-        q: $Word
-        a: Слово из справочника: {{$parseTree._Word.word}}
+/    state: Text
+/        q: $Word
+/        a: Слово из справочника: {{$parseTree._Word.word}}
 
     state: EndGame
         intent!: /end_game
