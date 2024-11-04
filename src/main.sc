@@ -51,7 +51,7 @@ theme: /
             // var Pairs = $parseTree.Pairs
             // Массив использованных пар
             var usedPairs = [];
-            var pair = $functions.getRandomState();
+            var pair = $Pairs[1].name
             usedPairs.push(pair);
             $reactions.answer("Какая столица у государства " + pair + "?");
 
