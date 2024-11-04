@@ -1,3 +1,8 @@
+require: geography-ru.csv
+    name = Pairs
+    var = $Pairs
+    strict = true
+
 function getRandomState() {
     var pairs = $Pairs;
     if (pairs.length > 0) {
