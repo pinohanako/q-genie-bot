@@ -46,7 +46,7 @@ theme: /
         intent!: /начатьИгру
         script:
             // var Pairs = $parseTree.Pairs
-            // Массив использованных пар
+            // Массив использованных пар 
             var usedPairs = [];
             var pair = $Pairs.get(name);
             usedPairs.push(pair);
