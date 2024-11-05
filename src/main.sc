@@ -57,7 +57,7 @@ theme: /
             state: CheckCapital
                 q: * $Capital *
                 if: $session.count % 5 === 0
-                    go!: /Do you want to start?/Yes/CheckCapital/GetGPTResplonse/
+                    go!: /Do you want to start?/Yes/CheckCapital/GetGPTResponse
                 else:
                 script:
                     $session.count++;
