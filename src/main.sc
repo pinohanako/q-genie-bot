@@ -152,22 +152,22 @@ theme: /
                     $reactions.answer("Неа! Попробуй еще раз");
                 }
                 
-        state: CountryCapitalMatch
-            q: * $Country *
-            script:
-                if ($session.state == $session.capital) {
-                    $reactions.answer("Да, редкий случай, когда названия страны и ее столицы совпадают!!");
-                    $session.correctAnswers++;
+    state: CountryCapitalMatch
+        q: * $Country *
+        script:
+            if ($session.state == $session.capital) {
+                $reactions.answer("Да, редкий случай, когда названия страны и ее столицы совпадают!!");
+                $session.correctAnswers++;
     
-                    var newRandomPair = getRandomPair($Pairs);
-                    var newState = newRandomPair['value']['name'];
-                    var newCapital = newRandomPair['value']['capital'];
-                    $session.capital = newCapital
-                    $reactions.answer("Продолжим! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
-                } else if ($session.state == $parseTree._Country.name) {
-                    $session.count++;
-                    $reactions.answer("Это государство, а я спрашивал столицу!");
-                }
+                var newRandomPair = getRandomPair($Pairs);
+                var newState = newRandomPair['value']['name'];
+                var newCapital = newRandomPair['value']['capital'];
+                $session.capital = newCapital
+                $reactions.answer("Продолжим! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
+            } else if ($session.state == $parseTree._Country.name) {
+                $session.count++;
+                $reactions.answer("Это государство, а я спрашивал столицу!");
+            }
 
     state: EndGame
         intent!: /end_game
