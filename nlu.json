@@ -23,7 +23,7 @@
     }
   },
   "intents" : [ {
-    "path" : "/стоп",
+    "path" : "/end_game",
     "description" : "завершить игру и вывести количество угаданных ответов",
     "enabled" : true,
     "shared" : false,
