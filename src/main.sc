@@ -45,6 +45,7 @@ theme: /
                  var randomPair = getRandomPair($Pairs);
                  var state = randomPair['value']['name'];
                  var capital = randomPair['value']['capital'];
+                 var = capital
                  $reactions.answer("Отлично! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
             
             state: CheckCapital
