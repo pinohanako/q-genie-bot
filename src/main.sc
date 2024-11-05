@@ -60,7 +60,7 @@ theme: /
                     go!: /Do you want to start?/Yes/CheckCapital/GetGPTResponse
                 else:
                 script:
-                    if ($session.state === $parseTree._Country.name & !"Ватикан") {
+                    if ($session.state === $parseTree._Country.name & !("Ватикан" | "Сан-Марино"| "Бразилиа" | "Гватемала" | "Панама")) {
                         $reactions.answer("Ой, целая страна это не город! А я спросил про столицу");
                     } else {
                         if ($session.capital === $parseTree._Capital.name) {
