@@ -49,7 +49,7 @@ theme: /
 
                  $session.capital = capital
                  $reactions.answer("Отлично! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
-                 $session.items = $Pairs.splice(index, 1);
+                 var newPairs = $Pairs.splice(index, 1);
                  
             state: CheckCapital
                 q: * $Capital *
@@ -57,7 +57,7 @@ theme: /
                     var correctAnswers = 0;
                     if ($session.capital === $parseTree._Capital.name) {
                         correctAnswers += 1;
-                        var newRandomPair = getRandomPair($session.items);
+                        var newRandomPair = getRandomPair($Pairs);
                         if (newRandomPair) {
                             var newState = newRandomPair['value']['name'];
                             var newCapital = newRandomPair['value']['capital'];
