@@ -57,7 +57,7 @@ theme: /Game
             var capital = randomValue;
 
             usedPairs.push(state, capital);
-            $reactions.answer("Какая столица у государства " + state + "?");
+            $reactions.answer("Какая столица у государства " + capital + "?");
 
          // для проверки ответа игрока
     state: CheckCapital
