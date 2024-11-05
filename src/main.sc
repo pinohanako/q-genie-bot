@@ -44,7 +44,7 @@ theme: /
             script:
                  var $originalPairs = $Pairs;
                  var randomPair = getRandomPair($Pairs);
-                 
+
                  var index = randomPair['id'];
                  var state = randomPair['value']['name'];
                  var capital = randomPair['value']['capital'];
@@ -56,12 +56,10 @@ theme: /
                 q: * $Capital *
                 script:
                     $session.correctAnswers = 1;
-                    counter = 0;
                     if ($session.capital === $parseTree._Capital.name) {
                         $session.correctAnswers++;
-                        counter++;
                         
-                        if (counter % 5 === 0) {
+                        if ($session.correctAnswers % 5 === 0) {
                             $reactions.answer("Поздравляем! Вы угадали 5 столиц подряд!");
                         }
                         
