@@ -50,15 +50,14 @@ theme: /Game
             // Массив использованных пар 
             var usedPairs = [];
             var keys = Object.keys($Pairs); 
-            var randomIndex = Math.floor(Math.random() * keys.length);
-            var randomKey = keys[randomIndex];
-            var Value = keys[randomIndex][1];
-            var randomValue = $Pairs[randomKey]; 
-            // var state = randomKey;
-            // var capital = randomValue;
+            var randomIndex = keys[Math.floor(Math.random() * keys.length)];
+            var randomValue = keys[randomIndex][1];
+            // var randomValue = $Pairs[randomKey]; 
+            var state = randomKey;
+            var capital = randomValue;
 
             usedPairs.push(state, capital);
-            $reactions.answer("Какая столица у государства " + Value + "?");
+            $reactions.answer("Какая столица у государства " + randomValue + "?");
 
          // для проверки ответа игрока
     state: CheckCapital
