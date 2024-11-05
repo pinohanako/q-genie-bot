@@ -56,6 +56,7 @@ theme: /
                 q: * $Capital *
                 script:
                     $session.correctAnswers = 1;
+                    counter = 0;
                     if ($session.capital === $parseTree._Capital.name) {
                         $session.correctAnswers++;
                         counter++;
