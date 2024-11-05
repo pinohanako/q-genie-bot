@@ -51,7 +51,7 @@ theme: /
             q: * $Capital *
             script:
                 var correctAnswers = 0
-                if ($parseTree._Capital.name.length === 1) {
+                if ($parseTree._Capital.name.split(" ").length === 1) {
                     if (capital === $parseTree._Capital.name) {
                         correctAnswers++;
                         var randomPair = getRandomPair($Pairs);
