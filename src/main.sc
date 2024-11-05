@@ -51,9 +51,8 @@ theme: /
             q: * $Capital *
             script:
                 var correctAnswers = 0
-                var sessionCapital = {{$parseTree._Capital.name}}
-                if (sessionCapital.length === 1) {
-                    if (capital === sessionCapital) {
+                if ($parseTree._Capital.name.length === 1) {
+                    if (capital === $parseTree._Capital.name) {
                         correctAnswers++;
                         var randomPair = getRandomPair($Pairs);
                         var state = RandomPair['value']['name'];
