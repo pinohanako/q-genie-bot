@@ -61,6 +61,7 @@ theme: /
                     if ($session.state == $parseTree._Country.name) {
                         $session.count++;
                         $reactions.answer("Это государство, а я спрашивал столицу!");
+                    }
             
             state: CheckCapital
                 q: * $Capital *
