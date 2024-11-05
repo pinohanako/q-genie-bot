@@ -106,7 +106,7 @@ theme: /
     state: CapitalPattern
         q: * $Capital *
         if: $session.count % 5 === 0
-           go!: /CapitalPattern/GetGPTResplonse
+           go!: /CapitalPattern/GetGPTResponse
         else:
         script:
             $session.count++;
