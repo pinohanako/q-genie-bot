@@ -51,9 +51,9 @@ theme: /
             q: * $Capital *
             script:
                 var correctAnswers = 0
-                var userAnswer = $parseTree._Capital.name.split(" ")
-                if (userAnswer.length === 1) {
-                    if (capital === userAnswer) {
+                var sessionCapital = $parseTree._Capital.name.split(" ")
+                if (sessionCapital.length === 1) {
+                    if (capital === sessionCapital) {
                         correctAnswers++;
                         var randomPair = getRandomPair($Pairs);
                         var state = RandomPair['value']['name'];
