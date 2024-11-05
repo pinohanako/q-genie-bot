@@ -7,7 +7,10 @@
         <a state = "/Do you want to start?/No"/>
     </test-case>
     <test-case id="2">
-        <q>/NoMatch</q>
-        <a state = "/NoMatch"/>
+        <q>/start</q>
+        <a>Привет! Давай поиграем. Я буду называть страну, а ты угадываешь столицу.</a>
+        <a>Начнем?</a>
+        <q>давай</q>
+        <a state = "/Do you want to start?/Yes"/>
     </test-case>
 </test>
