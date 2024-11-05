@@ -1,8 +1,3 @@
-require: geography-ru.csv
-    name = Pairs
-    var = $Pairs
-    strict = true
-
 function getRandomPair(pairs) {
     if (pairs.length === 0) {
         return null;
