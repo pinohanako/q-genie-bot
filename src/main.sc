@@ -49,7 +49,7 @@ theme: /Game
         script:
             // Массив использованных пар 
             var usedPairs = [];
-            var randomPair = getRandomPair($Pairs);
+            var randomPair = getRandomPair(Object.keys($Pairs));
             // var keys = Object.keys($Pairs);
             // var randomIndex = keys[Math.floor(Math.random() * keys.length)];
             var state = randomPair[2].name;
