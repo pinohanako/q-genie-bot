@@ -36,6 +36,8 @@
     <test-case id="8">
         <q>Заново</q>
         <a state = "/StartAgain"/>
+    </test-case>
+    <test-case id="9">
         <context var="session">
             {
                 "count": "% 5 === 0"
