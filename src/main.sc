@@ -54,7 +54,7 @@ theme: /Game
             var randomValue = keys[randomIndex][1];
             // var randomValue = $Pairs[randomKey]; 
             var state = randomValue;
-            var capital = keys[randomIndex][2];
+            var capital = keys[randomIndex][0];
 
             usedPairs.push(state, capital);
             $reactions.answer("Какая столица у государства " + state + "? (Правильный ответ: " + capital + ")");
