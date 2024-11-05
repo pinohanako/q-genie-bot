@@ -99,7 +99,7 @@ theme: /
 
             $session.capital = capital
             $reactions.answer("А мы вошли во вкус! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
-
+            
     state: CapitalPattern
         q: * $Capital *
         if: $session.count % 5 === 0
