@@ -115,6 +115,7 @@ theme: /
            go!: /CapitalPattern/GetGPTResponse
         else:
         script:
+            $session.count = 0;
             if ($session.capital === $parseTree._Capital.name) {
                 $session.correctAnswers++;
                 $session.count++;
