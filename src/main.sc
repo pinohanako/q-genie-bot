@@ -44,7 +44,7 @@ theme: /
             script:
                  var $originalPairs = $Pairs;
                  var randomPair = getRandomPair($Pairs);
-                 $session.correctAnswers = 1;
+                 $session.correctAnswers = 0;
 
                  var index = randomPair['id'];
                  var state = randomPair['value']['name'];
