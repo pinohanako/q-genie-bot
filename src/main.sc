@@ -59,7 +59,7 @@ theme: /
                 script:
                     $session.count++;
                     if ($session.count % 5 === 0) {
-                        go!: GetGPTResponse
+                        go!: GetGPTResponse;
                     }
                     //if ($session.count % 5 === 0) {
                     //    var initialCapital = $parseTree._Capital.name
