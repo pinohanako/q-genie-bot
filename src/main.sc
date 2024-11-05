@@ -59,8 +59,8 @@ theme: /
                 script:
                     $session.count++;
                     if ($session.count % 5 === 0) {
-                go: GetGPTResplonse
-                }
+                        go: GetGPTResplonse
+                    }
                     if ($session.capital === $parseTree._Capital.name) {
                         $session.correctAnswers++;
                         var newRandomPair = getRandomPair($Pairs);
@@ -84,6 +84,7 @@ theme: /
                         var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
                         var response = assistantResponse.choices[0].message.content;
                         $reactions.answer(response);
+                    go!: /CheckCapital
  
         state: No
             q: * [уже] (ничем|не надо|не нужно|нет|не нач) [спасибо] *
