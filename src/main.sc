@@ -119,8 +119,14 @@ theme: /
         a: Пока-пока
 
     state: NoMatch
-        event!: noMatch
-        a: Не понял. Вы сказали: {{$request.query}}
+        event!: noMatch 
+        script:
+             var userMessage = $request.query;
+             var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
+             var response = assistantResponse.choices[0].message.content;
+             $reactions.answer(response);
+             
+         // a: Не понял. Вы сказали: {{$request.query}}
 
     state: reset
         q!: reset
