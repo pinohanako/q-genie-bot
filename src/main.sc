@@ -58,9 +58,10 @@ theme: /
                 q: * $Capital *
                 script:
                     $session.count++;
-                    if ($session.count % 5 === 0) {
-                        go: /Do you want to start?/Yes/CheckCapital/GetGPTResplonse
-                    }
+                if: $session.count % 5 === 0
+                    go!: /Do you want to start?/Yes/CheckCapital/GetGPTResplonse
+                else:
+                script:
                     if ($session.capital === $parseTree._Capital.name) {
                         $session.correctAnswers++;
                         var newRandomPair = getRandomPair($Pairs);
@@ -107,9 +108,10 @@ theme: /
         q: * $Capital *
         script:
             $session.count++;
-            if ($session.count % 5 === 0) {
-                go: /CapitalPattern/GetGPTResplonse
-            }
+        if: $session.count % 5 === 0
+           go!: /CapitalPattern/GetGPTResplonse
+        else:
+        script:
             if ($session.capital === $parseTree._Capital.name) {
                 $session.correctAnswers++;
                 if ($session.correctAnswers % 5 === 0) {
