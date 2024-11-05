@@ -51,7 +51,7 @@ theme: /
             q: * $Capital *
             script:
                 var correctAnswers = 0
-                var sessionCapital = $parseTree._Capital.name.split(" ")
+                var sessionCapital = $parseTree._Capital.name
                 if (sessionCapital.length === 1) {
                     if (capital === sessionCapital) {
                         correctAnswers++;
