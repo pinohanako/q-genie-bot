@@ -56,7 +56,7 @@ theme: /
                     var correctAnswers = 0;
                     if ($session.capital === $parseTree._Capital.name) {
                         correctAnswers += 1;
-                        $session.correctAnswers = correctAnswers
+                        $session.correctAnswers = correctAnswers;
                         var newRandomPair = getRandomPair($Pairs);
                         if (newRandomPair) {
                             var newState = newRandomPair['value']['name'];
@@ -80,7 +80,7 @@ theme: /
                 var correctAnswers = 0;
                 if ($session.capital === $parseTree._Capital.name) {
                     correctAnswers += 1;
-                    $session.correctAnswers = correctAnswers
+                    $session.correctAnswers = correctAnswers;
                     var newRandomPair = getRandomPair($Pairs);
                     if (newRandomPair) {
                         var newState = newRandomPair['value']['name'];
