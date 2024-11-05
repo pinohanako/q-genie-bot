@@ -59,7 +59,7 @@ theme: /
                 q: * $Country *
                 script:
                     $session.count++;
-                    $reactions.answer("Это государство, а я спрашивал столицу!");
+                    $reactions.answer('Это государство, а игра называется "угадай столицу"!');
             
             state: CheckCapital
                 q: * $Capital *
@@ -121,7 +121,7 @@ theme: /
         q: * $Country *
         script:
             $session.count++;
-            $reactions.answer("Это государство, а я спрашивал столицу!");
+            $reactions.answer('Это государство, а игра называется "угадай столицу"!');
     
     state: CapitalPattern
         q: * $Capital *
