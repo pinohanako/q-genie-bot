@@ -45,13 +45,28 @@ theme: /
                  var randomPair = getRandomPair($Pairs);
                  var state = randomPair['value']['name'];
                  var capital = randomPair['value']['capital'];
-                 $reactions.answer("Отлично! Какая столица у государства " + state + "? (Правильный ответ: " + capital + ")");
-                
+                 $reactions.answer("Отлично! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
+            
+            state: CheckCapital
+                q: * $Capital *
+                script:
+                    if (capital === $parseTree._Capital.name) {
+                        correctAnswers += 1;
+                        var newRandomPair = getRandomPair($Pairs);
+                        if (newRandomPair) {
+                            var newState = newRandomPair['value']['name'];
+                            var newCapital = newRandomPair['value']['capital'];
+                            $reactions.answer("Верно! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
+                        } else {
+                            $reactions.answer("Ура! Все столицы угаданы");
+                        }
+                    } else {
+                        $reactions.answer("Неверный ответ! Попробуй еще раз");
+                    }
+ 
         state: No
             q: * [уже] (ничем|не надо|не нужно|нет|не нач) [спасибо] *
             a: Хорошо. Буду рад поиграть в следующий раз!
-
-
 
     state: EndGame
         intent!: /end_game
