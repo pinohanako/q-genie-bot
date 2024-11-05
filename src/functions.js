@@ -1,6 +1,6 @@
 var usedPairs = [];
 
-function getNextPair(pairs) {
+function getRandomPair(pairs) {
     if (pairs.length === 0) {
         return null;
     } else {
