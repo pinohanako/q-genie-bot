@@ -28,5 +28,5 @@
     <test-case id="6">
         <q>До свидания</q>
         <a state = "/Buy"/>
-    </test-case>
+    </test-case> 
 </test>
