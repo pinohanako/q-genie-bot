@@ -14,6 +14,8 @@ require: where/where.sc
 require: geography-ru.csv
     name = Pairs
     var = $Pairs
+    
+require: scripts/functions.js
 
 # Для игры Виселица
 require: hangmanGameData.csv
