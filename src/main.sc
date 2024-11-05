@@ -58,8 +58,9 @@ theme: /
                     $session.correctAnswers = 1;
                     if ($session.capital === $parseTree._Capital.name) {
                         $session.correctAnswers++;
+                        counter++;
                         
-                        if ($session.correctAnswers % 5 === 0) {
+                        if (counter % 5 === 0) {
                             $reactions.answer("Поздравляем! Вы угадали 5 столиц подряд!");
                         }
                         
