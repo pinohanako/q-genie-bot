@@ -84,7 +84,7 @@ theme: /
                         var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
                         var response = assistantResponse.choices[0].message.content;
                         $reactions.answer(response);
-                    go!: /CheckCapital
+                    go!: /Do you want to start?/Yes/CheckCapital
  
         state: No
             q: * [уже] (ничем|не надо|не нужно|нет|не нач) [спасибо] *
