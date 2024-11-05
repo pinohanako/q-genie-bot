@@ -42,15 +42,14 @@ theme: /
         intent!: /пока
         a: Пока-пока
 
+theme: /Game
     state: StartGame
         intent!: /начатьИгру
         script:
             // var Pairs = $parseTree.Pairs
             // Массив использованных пар 
             var usedPairs = [];
-            // Все ключи справочника 
             var keys = Object.keys($Pairs); 
-            // Генерируем случайный индекс 
             var randomIndex = Math.floor(Math.random() * keys.length);
             var randomKey = keys randomIndex;
             var randomValue = $Pairs randomKey; 
