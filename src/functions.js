@@ -3,16 +3,16 @@ require: geography-ru.csv
     var = $Pairs
     strict = true
 
-function getRandomState() {
-    var pairs = $Pairs;
-    if (pairs.length > 0) {
-        var randomIndex = Math.floor(Math.random() * pairs.length);
-        return pairs[randomIndex][0];
-    } else {
+function getRandomPair(pairs) {
+    if (pairs.length === 0) {
         return null;
     }
-}
 
-module.exports = {
-    getRandomState: getRandomState
-};
+    const randomIndex = Math.floor(Math.random() * pairs.length);
+    const pair = pairs[randomIndex];
+
+    // Сохраняем использованные пары
+    usedPairs.push(pair);
+
+    return pair;
+}
