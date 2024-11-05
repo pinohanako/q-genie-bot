@@ -29,4 +29,8 @@
         <q>До свидания</q>
         <a state = "/Buy"/>
     </test-case> 
+    <test-case id="7">
+        <q>Я ем березовую кору</q>
+        <a state = "/NoMatch"/>
+    </test-case> 
 </test>
