@@ -29,6 +29,16 @@
     "shared" : false,
     "phrases" : [ {
       "text" : "стоп"
+    }, {
+      "text" : "хватит"
+    }, {
+      "text" : "перестань"
+    }, {
+      "text" : "конец"
+    }, {
+      "text" : "заканчивай"
+    }, {
+      "text" : "надоело"
     } ],
     "classificationRules" : {
       "refs" : [ ]
