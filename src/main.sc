@@ -47,6 +47,7 @@ theme: /
                  var capital = randomPair['value']['capital'];
                  $session.capital = capital
                  $reactions.answer("Отлично! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
+                 $Pairs.splice($Pairs.indexOf(randomPair), 1);
             
             state: CheckCapital
                 q: * $Capital *
