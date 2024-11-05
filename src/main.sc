@@ -33,30 +33,24 @@ theme: /
         q!: $regex</start>
         script:
             $jsapi.startSession();
-        a: Привет! Давай поиграем. Я буду называть страну, а ты угадываешь столицу. Я готов начать
+        a: Привет! Давай поиграем. Я буду называть страну, а ты угадываешь столицу.
+        go!: /Do you want to start?
         
-    state: Hello
-        intent!: /привет
-        a: Привет-привет, уже виделись :)
-        
-    state: Buy
-        intent!: /пока
-        a: Пока-пока
+    state: Do you want to start?
+        a: Начнем?
 
-theme: /Game
-    state: StartGame
-        intent!: /начатьИгру
-        script:
-            // Массив использованных пар 
-            var usedPairs = [];
-            var randomPair = getRandomPair($Pairs);
-            // var keys = Object.keys($Pairs);
-            // var randomIndex = keys[Math.floor(Math.random() * keys.length)];
-            var state = randomPair['value']['name'];
-            var capital = randomPair['value']['capital'];
-            $reactions.answer("Какая столица у государства " + state + "? (Правильный ответ: " + capital + ")");
+        state: Yes
+            q: * [думаю] (да|*можете|*можешь|надеюсь|хотелось бы|давай|нач) *
+            script:
+                 var randomPair = getRandomPair($Pairs);
+                 var state = randomPair['value']['name'];
+                 var capital = randomPair['value']['capital'];
+                 $reactions.answer("Отлично! Какая столица у государства " + state + "? (Правильный ответ: " + capital + ")");
+            
+        state: No
+            q: * [уже] (ничем|не надо|не нужно|нет|не нач) [спасибо] *
+            a: Хорошо. Буду рад поиграть в следующий раз!
 
-         // для проверки ответа игрока
     state: CheckCapital
         q: * $Capital *
         script:
@@ -93,6 +87,14 @@ theme: /Game
         script:
              var correctAnswers = $memory.get("correctAnswers") || 0;
              $reactions.answer("Игра завершена! Ты правильно назвал " + correctAnswers + " столиц.")
+
+    state: Hello
+        intent!: /привет
+        a: Привет-привет, уже виделись :)
+        
+    state: Buy
+        intent!: /пока
+        a: Пока-пока
 
     state: NoMatch
         event!: noMatch
