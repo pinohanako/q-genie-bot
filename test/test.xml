@@ -13,4 +13,24 @@
         <q>давай</q>
         <a state = "/Do you want to start?/Yes"/>
     </test-case>
+    <test-case id="3">
+        <q>Начни игру заново</q>
+        <a state = "/StartAgain"/>
+    </test-case>
+    <test-case id="4">
+        <q>Хватит</q>
+        <a state = "/EndGame"/>
+    </test-case>
+    <test-case id="5">
+        <q>Привет</q>
+        <a state = "/Hello"/>
+    </test-case>
+    <test-case id="6">
+        <q>До свидания</q>
+        <a state = "/Buy"/>
+    </test-case>
+    <test-case id="7">
+        <q>Можно я съем березовую кору? Это безопасно?</q>
+        <a state = "/NoMatch"/>
+    </test-case>
 </test>
