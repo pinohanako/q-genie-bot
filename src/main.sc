@@ -87,21 +87,7 @@ theme: /
 
     state: CapitalPattern
         q: * $Capital *
-        script:
-            if ($session.capital === $parseTree._Capital.name) {
-                $session.correctAnswers++;
-                var newRandomPair = getRandomPair($Pairs);
-                if (newRandomPair) {
-                    var newState = newRandomPair['value']['name'];
-                    var newCapital = newRandomPair['value']['capital'];
-                    $session.capital = newCapital
-                    $reactions.answer("Верно! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
-                } else {
-                    $reactions.answer("Ура! Все столицы угаданы");
-                }
-            } else {
-                $reactions.answer("Неа! Попробуй еще раз");
-            }
+        go!: /CheckCapital
 
     state: EndGame
         intent!: /end_game
