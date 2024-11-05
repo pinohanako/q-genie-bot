@@ -55,12 +55,11 @@ theme: /
         q: * $Capital *
         script:
             var correctAnswers = 0
-            // Проверяем, содержит ли ответ только одну столицу
-            if ($parseTree._Capital.name.split(" ").length === 1) {
-                var capital = RandomPair['value']['capital'];
-                if (capital === $parseTree._Capital.name) {
+            var userAnswer = $parseTree._Capital.name.split(" ")
+            if (userAnswer.length === 1) {
+                if ($jsapi.getVariable('capital') === $parseTree._Capital.name) {
                     correctAnswers++;
-                    // var randomPair = getRandomPair($Pairs);
+                    var randomPair = getRandomPair($Pairs);
                     var state = RandomPair['value']['name'];
                     var capital = RandomPair['value']['capital'];
                     if (randomPair != 0) {
