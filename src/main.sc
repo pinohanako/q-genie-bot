@@ -46,27 +46,6 @@ theme: /
                  var state = randomPair['value']['name'];
                  var capital = randomPair['value']['capital'];
                  $reactions.answer("Отлично! Какая столица у государства " + state + "? (Правильный ответ: " + capital + ")");
-            
-            state: CheckCapital
-            q: * $Capital *
-            script:
-                var correctAnswers = 0
-                if ($parseTree._Capital.name.split(" ").length === 1) {
-                    if (capital === $parseTree._Capital.name) {
-                        correctAnswers++;
-                        var randomPair = getRandomPair($Pairs);
-                        var state = RandomPair['value']['name'];
-                        var capital = RandomPair['value']['capital'];
-                        if (randomPair != 0) {
-                            $reactions.answer("Какая столица у государства " + state + "? (Правильный ответ: " + capital + ")");
-                        } else {
-                            $reactions.answer("Ура! Все столицы угаданы");}
-                    } else {
-                        $reactions.answer("Неа! Попробуй еще раз.");
-                    }
-                } else {
-                    $reactions.answer("Эй, придется определиться! Перебором дело не пойдет");
-                }
                 
         state: No
             q: * [уже] (ничем|не надо|не нужно|нет|не нач) [спасибо] *
