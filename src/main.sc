@@ -115,7 +115,6 @@ theme: /
            go!: /CapitalPattern/GetGPTResponse
         else:
         script:
-            $session.count = 0;
             if ($session.capital === $parseTree._Capital.name) {
                 $session.correctAnswers++;
                 $session.count++;
@@ -131,7 +130,6 @@ theme: /
             }
             
         state: GetGPTResponse 
-            q: * $Capital *
             script:
                 var initialCapital = $parseTree._Capital.name
                 var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
