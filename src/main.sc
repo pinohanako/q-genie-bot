@@ -58,7 +58,7 @@ theme: /
             state: CountryMatch
                 q: * $Country *
                 if: $session.state = $session.capital;
-                    go!: /CheckCapital
+                    go!: /Do you want to start?/Yes/CheckCapital/
                 else:
                 script:
                     $session.count++;
