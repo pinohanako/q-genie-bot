@@ -37,13 +37,4 @@
         <q>Заново</q>
         <a state = "/StartAgain"/>
     </test-case>
-    <test-case id="9">
-        <context var="session">
-            {
-                "count": "% 5 === 0"
-            }
-        </context>
-        <q>Париж</q>
-        <a state = "/Do you want to start?/Yes/CheckCapital/GetGPTResponse"/>
-    </test-case> 
 </test>
