@@ -53,11 +53,11 @@ theme: /Game
             var randomIndex = keys[Math.floor(Math.random() * keys.length)];
             var randomValue = keys[randomIndex][1];
             // var randomValue = $Pairs[randomKey]; 
-            var state = randomValue;
+            var state = randomValue[1];
             var capital = keys[randomIndex][2];
 
             usedPairs.push(state, capital);
-            $reactions.answer("Какая столица у государства " + state + "? (Правильный ответ: )" + capital);
+            $reactions.answer("Какая столица у государства " + state + "? (Правильный ответ: " + capital + ")");
 
          // для проверки ответа игрока
     state: CheckCapital
