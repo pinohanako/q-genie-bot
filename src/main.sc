@@ -50,7 +50,7 @@ theme: /
 
                  $session.capital = capital
                  $reactions.answer("Отлично! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
-                 
+
             state: CheckCapital
                 q: * $Capital *
                 script:
