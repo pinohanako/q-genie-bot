@@ -119,7 +119,7 @@ theme: /
             $session.capital = capital
             $reactions.answer("А мы вошли во вкус! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
     
-    state: CountryMatch
+    state: CountryPattern
         q: * $Country *
         script:
             if ($session.state == $parseTree._Country.name) {
