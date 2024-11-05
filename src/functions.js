@@ -4,7 +4,8 @@ function getRandomPair(pairs) {
         return null;
     }
     var randomIndex = Math.floor(Math.random() * pairs.length);
-    var pair = pairs[randomIndex];
+    var pair = pairs.splice(randomIndex, 1)[0];
+    //var pair = pairs[randomIndex];
     usedPairs.push(pair);
     return pair;
 }
