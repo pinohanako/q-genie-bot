@@ -53,7 +53,7 @@ theme: /
                 var correctAnswers = 0
                 var userAnswer = $parseTree._Capital.name.split(" ")
                 if (userAnswer.length === 1) {
-                    if (capital === $parseTree._Capital.name) {
+                    if (capital === userAnswer) {
                         correctAnswers++;
                         var randomPair = getRandomPair($Pairs);
                         var state = RandomPair['value']['name'];
