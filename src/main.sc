@@ -58,6 +58,7 @@ theme: /
                         if (newRandomPair) {
                             var newState = newRandomPair['value']['name'];
                             var newCapital = newRandomPair['value']['capital'];
+                            $session.capital = newCapital
                             $reactions.answer("Верно! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
                         } else {
                             $reactions.answer("Ура! Все столицы угаданы");
