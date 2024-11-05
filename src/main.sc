@@ -47,7 +47,6 @@ theme: /
                  $session.correctAnswers = 0;
                  $session.count = 0;
 
-                 var index = randomPair['id'];
                  var state = randomPair['value']['name'];
                  var capital = randomPair['value']['capital'];
 
@@ -149,8 +148,8 @@ theme: /
                     $session.capital = newCapital
                     $reactions.answer("Продолжим! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
                 } else {
-                    $reactions.answer("Неа! Попробуй еще раз");
                     $session.count++;
+                    $reactions.answer("Неа! Попробуй еще раз");
                 }
 
     state: EndGame
