@@ -55,7 +55,7 @@ theme: /
                 q: * $Capital *
                 script:
                     if ($session.capital === $parseTree._Capital.name)
-                        $session.correctAnswers++; 
+                        $session.correctAnswers++;
                         var newRandomPair = getRandomPair($Pairs);
                         if (newRandomPair) {
                             var newState = newRandomPair['value']['name'];
