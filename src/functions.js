@@ -3,7 +3,9 @@ function getRandomPair(pairs) {
     if (pairs.length === 0) {
         return null;
     }
-    var filteredPairs = pairs.filter(pair => !usedPairs.includes(pair));
+    var filteredPairs = pairs.filter(function(pair) {
+         return !usedPairs.includes(pair);
+    });
     if (filteredPairs.length === 0) {
         return null;
     }
