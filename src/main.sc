@@ -155,7 +155,7 @@ theme: /
     state: CountryCapitalMatch
         q: * $Country *
         script:
-            if ($parseTree._Country.name !== $Country) {
+            if ($parseTree._Country.name !== $parseTree._Country.name) {
                 $reactions.answer("Это государство, а я спрашивал столицу!");
             } else {
                 $reactions.answer("Это и есть столица!");
