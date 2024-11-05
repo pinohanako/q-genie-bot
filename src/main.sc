@@ -51,7 +51,7 @@ theme: /Game
             var usedPairs = [];
             var keys = Object.keys($Pairs); 
             var randomIndex = Math.floor(Math.random() * keys.length);
-            var randomKey = keys randomIndex;
+            var randomKey = keys[randomIndex];
             var randomValue = $Pairs randomKey; 
             var state = randomKey;
             var capital = randomValue;
