@@ -51,7 +51,7 @@ theme: /
             state: CheckCapital
                 q: * $Capital *
                 script:
-                    correctAnswers = 0
+                    var correctAnswers = 0;
                     if ($session.capital === $parseTree._Capital.name) {
                         correctAnswers += 1;
                         var newRandomPair = getRandomPair($Pairs);
