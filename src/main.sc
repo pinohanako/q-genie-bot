@@ -45,6 +45,7 @@ theme: /
                  var $originalPairs = $Pairs;
                  var randomPair = getRandomPair($Pairs);
                  $session.correctAnswers = 0;
+                 $session.count = 0;
 
                  var index = randomPair['id'];
                  var state = randomPair['value']['name'];
@@ -56,17 +57,17 @@ theme: /
             state: CheckCapital
                 q: * $Capital *
                 script:
+                    $session.count++;
+                    if ($session.count % 5 === 0) {
+                        var initialCapital = $parseTree._Capital.name
+                        var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
+                        var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
+                        var response = assistantResponse.choices[0].message.content;
+                        $reactions.answer(response);
+                    }
+                    
                     if ($session.capital === $parseTree._Capital.name) {
                         $session.correctAnswers++;
-                        
-                        if ($session.correctAnswers % 5 === 0) {
-                            var initialCapital = $parseTree._Capital.name
-                            var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
-                            var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
-                            var response = assistantResponse.choices[0].message.content;
-                            $reactions.answer(response);
-                        }
-                        
                         var newRandomPair = getRandomPair($Pairs);
                         if (newRandomPair) {
                             var newState = newRandomPair['value']['name'];
@@ -91,6 +92,7 @@ theme: /
             var index = randomPair['id'];
             var state = randomPair['value']['name'];
             var capital = randomPair['value']['capital'];
+            $session.correctAnswers = 0;
 
             $session.capital = capital
             $reactions.answer("А мы вошли во вкус! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
@@ -98,6 +100,14 @@ theme: /
     state: CapitalPattern
         q: * $Capital *
         script:
+            $session.count++;
+                if ($session.count % 5 === 0) {
+                    var initialCapital = $parseTree._Capital.name
+                    var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
+                    var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
+                    var response = assistantResponse.choices[0].message.content;
+                    $reactions.answer(response);
+                }
             if ($session.capital === $parseTree._Capital.name) {
                 $session.correctAnswers++;
                 if ($session.correctAnswers % 5 === 0) {
