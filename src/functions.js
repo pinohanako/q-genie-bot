@@ -4,7 +4,7 @@ function getRandomPair(pairs) {
     if (pairs.length === 0) {
         return null;
     } else {
-        const lastPair = pairs.pop();
+        var lastPair = pairs.pop();
         usedPairs.push(lastPair);
         return lastPair;
     }
