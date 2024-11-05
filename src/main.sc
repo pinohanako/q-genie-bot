@@ -155,11 +155,18 @@ theme: /
     state: CountryCapitalMatch
         q: * $Country *
         script:
-            if ($session.state !== $parseTree._Country.name) {
+            if ($session.state == $parseTree._Country.name) {
+                $session.count++;
                 $reactions.answer("Это государство, а я спрашивал столицу!");
-            } else {
-                $reactions.answer("Это и есть столица!");
-                // go!: /Do you want to start?/Yes/CheckCapital/GetGPTResponse
+            } else if ($session.state == $session.capital) {
+                $reactions.answer("Да, редкий случай, когда названия странцы и ее столицы совпадают!!");
+                $session.correctAnswers++;
+                
+                    var newRandomPair = getRandomPair($Pairs);
+                    var newState = newRandomPair['value']['name'];
+                    var newCapital = newRandomPair['value']['capital'];
+                    $session.capital = newCapital
+                    $reactions.answer("Продолжим! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
             }
 
     state: EndGame
