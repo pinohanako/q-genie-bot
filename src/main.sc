@@ -40,7 +40,7 @@ theme: /
         a: Начнем?
 
         state: Yes
-            q: * [думаю] (да|*можете|*можешь|надеюсь|хотелось бы|давай|начн) *
+            q: * [думаю] (да|*можете|*можешь|надеюсь|хотелось бы|давай|начнем) *
             script:
                  var randomPair = getRandomPair($Pairs);
                  var state = randomPair['value']['name'];
