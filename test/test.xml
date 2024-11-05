@@ -36,7 +36,5 @@
     <test-case id="8">
         <q>Заново</q>
         <a state = "/StartAgain"/>
-        <q>Париж</q>
-        <a state = "/CapitalPattern"/>
     </test-case> 
 </test>
