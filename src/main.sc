@@ -49,7 +49,6 @@ theme: /
 
                  $session.capital = capital
                  $reactions.answer("Отлично! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
-                 var newPairs = $Pairs.splice(index, 1);
                  
             state: CheckCapital
                 q: * $Capital *
