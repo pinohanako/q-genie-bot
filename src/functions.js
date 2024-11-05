@@ -1,3 +1,4 @@
+var usedPairs = [];
 function getRandomPair(pairs) {
     if (pairs.length === 0) {
         return null;
