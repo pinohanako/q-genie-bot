@@ -51,10 +51,10 @@ theme: /Game
             var usedPairs = [];
             var keys = Object.keys($Pairs); 
             var randomIndex = keys[Math.floor(Math.random() * keys.length)];
-            var randomValue = keys[randomIndex][1];
+            var randomValue = keys[randomIndex][0];
             // var randomValue = $Pairs[randomKey]; 
             var state = randomValue;
-            var capital = keys[randomIndex][0];
+            var capital = keys[randomIndex][0][1];
 
             usedPairs.push(state, capital);
             $reactions.answer("Какая столица у государства " + state + "? (Правильный ответ: " + capital + ")");
