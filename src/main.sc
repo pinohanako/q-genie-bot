@@ -57,7 +57,7 @@ theme: /
             state: CheckCapital
                 q: * $Capital *
                 if: $session.count % 5 === 0
-                    go!: /Do you want to start?/Yes/CheckCapital/GetGPTResplonse
+                    go!: /Do you want to start?/Yes/CheckCapital/GetGPTResplonse/
                 else:
                 script:
                     $session.count++;
@@ -76,8 +76,7 @@ theme: /
                         $reactions.answer("Неверный ответ! Попробуй еще раз");
                     }
                     
-                state: GetGPTResponse 
-                    q: * $Capital *
+                state: GetGPTResponse
                     script:
                         $session.count++;
                         var initialCapital = $parseTree._Capital.name
