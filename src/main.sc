@@ -130,12 +130,7 @@ theme: /
              var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
              var response = assistantResponse.choices[0].message.content;
              $reactions.answer(response);
-
-var userMessage = "Скажи какой-то интересный факт о столице " + capital
-var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
-var response = assistantResponse.choices[0].message.content;
-
-
+             
     state: reset
         q!: reset
         script:
