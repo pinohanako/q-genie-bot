@@ -96,6 +96,10 @@ theme: /
         script:
             if ($session.capital === $parseTree._Capital.name) {
                 $session.correctAnswers++;
+                if ($session.correctAnswers % 5 === 0) {
+                    $reactions.answer("Вы угадали 5 столиц подряд!");
+                }
+                
                 var newRandomPair = getRandomPair($Pairs);
                 if (newRandomPair) {
                     var newState = newRandomPair['value']['name'];
