@@ -60,22 +60,19 @@ theme: /
                     go!: /Do you want to start?/Yes/CheckCapital/GetGPTResponse
                 else:
                 script:
-                    if ($session.state === $parseTree._Country.name) {
-                        $reactions.answer("Ой, целая страна это не город! А я спросил про столицу");
+                    if ($session.capital === $parseTree._Capital.name) {
+                        $session.correctAnswers++;
+                        $session.count++;
+                        var newRandomPair = getRandomPair($Pairs);
+                        var newState = newRandomPair['value']['name'];
+                        var newCapital = newRandomPair['value']['capital'];
+                        $session.capital = newCapital
+                        $reactions.answer("Продолжим! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
                     } else {
-                        if ($session.capital === $parseTree._Capital.name) {
-                            $session.correctAnswers++;
-                            $session.count++;
-                            var newRandomPair = getRandomPair($Pairs);
-                            var newState = newRandomPair['value']['name'];
-                            var newCapital = newRandomPair['value']['capital'];
-                            $session.capital = newCapital
-                            $reactions.answer("Продолжим! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
-                        } else {
-                            $session.count++;
-                            $reactions.answer("Неверный ответ! Попробуй еще раз");
-                        }
+                        $session.count++;
+                        $reactions.answer("Неверный ответ! Попробуй еще раз");
                     }
+                }
 
                 state: GetGPTResponse
                     script:
