@@ -52,7 +52,7 @@ theme: /Game
             var keys = Object.keys($Pairs); 
             var randomIndex = keys[Math.floor(Math.random() * keys.length)];
             var randomKey = keys[randomIndex][0];
-            var randomValue = $Pairs[randomKey]; 
+            var randomValue = $Pairs[randomKey][0]; 
             var state = randomValue;
             var capital = keys[randomIndex][1];
 
