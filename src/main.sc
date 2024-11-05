@@ -60,7 +60,11 @@ theme: /
                         $session.correctAnswers++;
                         
                         if ($session.correctAnswers % 5 === 0) {
-                            $reactions.answer("Поздравляем! Вы угадали 5 столиц подряд!");
+                            var initialCapital = $parseTree._Capital.name
+                            var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
+                            var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
+                            var response = assistantResponse.choices[0].message.content;
+                            $reactions.answer(response);
                         }
                         
                         var newRandomPair = getRandomPair($Pairs);
@@ -68,7 +72,7 @@ theme: /
                             var newState = newRandomPair['value']['name'];
                             var newCapital = newRandomPair['value']['capital'];
                             $session.capital = newCapital
-                            $reactions.answer("Верно! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
+                            $reactions.answer("Продолжим! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
                         } else {
                             $reactions.answer("Ура! Все столицы угаданы");
                         }
@@ -97,7 +101,11 @@ theme: /
             if ($session.capital === $parseTree._Capital.name) {
                 $session.correctAnswers++;
                 if ($session.correctAnswers % 5 === 0) {
-                    $reactions.answer("Вы угадали 5 столиц подряд!");
+                    var initialCapital = $parseTree._Capital.name
+                    var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
+                    var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
+                    var response = assistantResponse.choices[0].message.content;
+                    $reactions.answer(response);
                 }
                 
                 var newRandomPair = getRandomPair($Pairs);
@@ -105,7 +113,7 @@ theme: /
                     var newState = newRandomPair['value']['name'];
                     var newCapital = newRandomPair['value']['capital'];
                     $session.capital = newCapital
-                    $reactions.answer("Верно! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
+                    $reactions.answer("Продолжим! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
                 } else {
                     $reactions.answer("Ура! Все столицы угаданы");
                 }
