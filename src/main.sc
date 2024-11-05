@@ -59,12 +59,15 @@ theme: /
                 script:
                     $session.count++;
                     if ($session.count % 5 === 0) {
-                        var initialCapital = $parseTree._Capital.name
-                        var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
-                        var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
-                        var response = assistantResponse.choices[0].message.content;
-                        $reactions.answer(response);
+                        go!: GetGPTResponse
                     }
+                    //if ($session.count % 5 === 0) {
+                    //    var initialCapital = $parseTree._Capital.name
+                    //    var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
+                    //    var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
+                    //    var response = assistantResponse.choices[0].message.content;
+                    //    $reactions.answer(response);
+                    //}
                     
                     if ($session.capital === $parseTree._Capital.name) {
                         $session.correctAnswers++;
@@ -80,6 +83,16 @@ theme: /
                     } else {
                         $reactions.answer("Неверный ответ! Попробуй еще раз");
                     }
+                    
+                state: GetGPTResponse
+                    q: * $Capital *
+                    script:
+                        var initialCapital = $parseTree._Capital.name
+                        var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
+                        var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
+                        var response = assistantResponse.choices[0].message.content;
+                        $reactions.answer(response);
+                    go!: CheckCapital
  
         state: No
             q: * [уже] (ничем|не надо|не нужно|нет|не нач) [спасибо] *
