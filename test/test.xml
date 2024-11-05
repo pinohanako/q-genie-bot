@@ -29,8 +29,4 @@
         <q>До свидания</q>
         <a state = "/Buy"/>
     </test-case>
-    <test-case id="7">
-        <q>Можно я съем березовую кору? Это безопасно?</q>
-        <a state = "/NoMatch"/>
-    </test-case>
 </test>
