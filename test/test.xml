@@ -39,6 +39,14 @@
         <a>Начнем?</a>
         <q>давай</q>
         <a state = "/Do you want to start?/Yes"/>
+        <q>Сан-Хосе</q>
+        <a state = "/Do you want to start?/Yes/CheckCapital"/>
+        <q>Панама</q>
+        <a state = "/Do you want to start?/Yes/CheckCapital"/>
+        <q>Коста-Рика</q>
+        <a state = "/Do you want to start?/Yes/CheckCapital"/>
+        <q>Подгорица</q>
+        <a state = "/Do you want to start?/Yes/CheckCapital"/>
         <context var="session">
             {
                 "count": "% 5 === 0"
