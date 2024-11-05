@@ -76,7 +76,7 @@ theme: /
                         $reactions.answer("Неверный ответ! Попробуй еще раз");
                     }
                     
-                state: GetGPTResponse
+                state: GetGPTResponse 
                     q: * $Capital *
                     script:
                         var initialCapital = $parseTree._Capital.name
