@@ -58,6 +58,11 @@ theme: /
                     $session.correctAnswers = 1;
                     if ($session.capital === $parseTree._Capital.name) {
                         $session.correctAnswers++;
+                        
+                        if (session.correctAnswers % 5 === 0) {
+                            $reactions.answer("Поздравляем! Вы угадали 5 столиц подряд!");
+                        }
+                        
                         var newRandomPair = getRandomPair($Pairs);
                         if (newRandomPair) {
                             var newState = newRandomPair['value']['name'];
@@ -125,8 +130,11 @@ theme: /
              var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
              var response = assistantResponse.choices[0].message.content;
              $reactions.answer(response);
-             
-         // a: Не понял. Вы сказали: {{$request.query}}
+
+var userMessage = "Скажи какой-то интересный факт о столице " + capital
+var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
+var response = assistantResponse.choices[0].message.content;
+
 
     state: reset
         q!: reset
