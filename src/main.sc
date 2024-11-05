@@ -76,7 +76,7 @@ theme: /
     state: EndGame
         intent!: /end_game
         script:
-             var correctAnswers = $memory.get("correctAnswers") || 0;
+             var correctAnswers = || 0;
              $reactions.answer("Игра завершена! Ты правильно назвал " + correctAnswers + " столиц.")
 
     state: Hello
