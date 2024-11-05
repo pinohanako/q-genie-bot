@@ -76,10 +76,9 @@ theme: /
         state: CapitalPattern
             q: * $Capital *
             script:
-                var correctAnswers = 0;
+                $session.correctAnswers = 0;
                 if ($session.capital === $parseTree._Capital.name) {
-                    correctAnswers += 1;
-                    $session.correctAnswers = correctAnswers;
+                    $session.correctAnswers += 1;
                     var newRandomPair = getRandomPair($Pairs);
                     if (newRandomPair) {
                         var newState = newRandomPair['value']['name'];
@@ -97,7 +96,7 @@ theme: /
         intent!: /end_game
         script:
              var correctAnswers = $session.correctAnswers || 0;
-             $reactions.answer("Игра завершена! Ты правильно назвал " + correctAnswers + " столиц.")
+             $reactions.answer("Молчу! Количество правильных ответов: " + correctAnswers + ".")
 
     state: Hello
         intent!: /привет
