@@ -73,24 +73,24 @@ theme: /
             q: * [уже] (ничем|не надо|не нужно|нет|не нач) [спасибо] *
             a: Хорошо. Буду рад поиграть в следующий раз!
 
-        state: CapitalPattern
-            q: * $Capital *
-            script:
-                $session.correctAnswers = 0;
-                if ($session.capital === $parseTree._Capital.name) {
-                    $session.correctAnswers += 1;
-                    var newRandomPair = getRandomPair($Pairs);
-                    if (newRandomPair) {
-                        var newState = newRandomPair['value']['name'];
-                        var newCapital = newRandomPair['value']['capital'];
-                        $session.capital = newCapital
-                        $reactions.answer("Верно! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
-                    } else {
-                        $reactions.answer("Ура! Все столицы угаданы");
-                    }
+    state: CapitalPattern
+        q: * $Capital *
+        script:
+            $session.correctAnswers = 0;
+            if ($session.capital === $parseTree._Capital.name) {
+                $session.correctAnswers += 1;
+                var newRandomPair = getRandomPair($Pairs);
+                if (newRandomPair) {
+                    var newState = newRandomPair['value']['name'];
+                    var newCapital = newRandomPair['value']['capital'];
+                    $session.capital = newCapital
+                    $reactions.answer("Верно! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
                 } else {
-                    $reactions.answer("Неа! Попробуй еще раз");
+                    $reactions.answer("Ура! Все столицы угаданы");
                 }
+            } else {
+                $reactions.answer("Неа! Попробуй еще раз");
+            }
 
     state: EndGame
         intent!: /end_game
