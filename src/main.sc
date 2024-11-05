@@ -59,16 +59,8 @@ theme: /
                 script:
                     $session.count++;
                     if ($session.count % 5 === 0) {
-                        go!: GetGPTResponse;
-                    }
-                    //if ($session.count % 5 === 0) {
-                    //    var initialCapital = $parseTree._Capital.name
-                    //    var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
-                    //    var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
-                    //    var response = assistantResponse.choices[0].message.content;
-                    //    $reactions.answer(response);
-                    //}
-                    
+                go!: GetGPTResponse
+                }
                     if ($session.capital === $parseTree._Capital.name) {
                         $session.correctAnswers++;
                         var newRandomPair = getRandomPair($Pairs);
