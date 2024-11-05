@@ -151,6 +151,16 @@ theme: /
                     $session.count++;
                     $reactions.answer("Неа! Попробуй еще раз");
                 }
+                
+    state: CountryCapitalMatch
+        q: * $Country *
+        script:
+            if ($parseTree._Country.name !== $Country) {
+                $reactions.answer("Это государство, а я спрашивал столицу!");
+            } else {
+                $reactions.answer("Это и есть столица!");
+                // go!: /Do you want to start?/Yes/CheckCapital/GetGPTResponse
+            }
 
     state: EndGame
         intent!: /end_game
