@@ -56,12 +56,11 @@ theme: /
 
             state: CheckCapital
                 q: * $Capital *
-                script:
-                    $session.count++;
                 if: $session.count % 5 === 0
                     go!: /Do you want to start?/Yes/CheckCapital/GetGPTResplonse
                 else:
                 script:
+                    $session.count++;
                     if ($session.capital === $parseTree._Capital.name) {
                         $session.correctAnswers++;
                         var newRandomPair = getRandomPair($Pairs);
@@ -93,12 +92,13 @@ theme: /
             a: Хорошо. Буду рад поиграть в следующий раз!
 
     state: StartAgain
-        q: * (еще раз|заново|повтор|старт|еще|продолж*|начн*) *
+        q: * (еще раз|заново|повтор|старт|еще|продолж*|начн* заново) *
         script:
             var randomPair = getRandomPair($Pairs);
             var index = randomPair['id'];
             var state = randomPair['value']['name'];
             var capital = randomPair['value']['capital'];
+            $session.count = 0;
             $session.correctAnswers = 0;
 
             $session.capital = capital
@@ -106,12 +106,11 @@ theme: /
 
     state: CapitalPattern
         q: * $Capital *
-        script:
-            $session.count++;
         if: $session.count % 5 === 0
            go!: /CapitalPattern/GetGPTResplonse
         else:
         script:
+            $session.count++;
             if ($session.capital === $parseTree._Capital.name) {
                 $session.correctAnswers++;
                 if ($session.correctAnswers % 5 === 0) {
@@ -137,7 +136,7 @@ theme: /
         state: GetGPTResponse 
             q: * $Capital *
             script:
-                //$session.count--;
+                $session.count++;
                 var initialCapital = $parseTree._Capital.name
                 var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
                 var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
