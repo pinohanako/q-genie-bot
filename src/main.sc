@@ -73,6 +73,17 @@ theme: /
             q: * [уже] (ничем|не надо|не нужно|нет|не нач) [спасибо] *
             a: Хорошо. Буду рад поиграть в следующий раз!
 
+    state: StartAgain
+        q: * (еще раз|заново|повтор|старт) *
+        script:
+            var randomPair = getRandomPair($Pairs);
+            var index = randomPair['id'];
+            var state = randomPair['value']['name'];
+            var capital = randomPair['value']['capital'];
+
+            $session.capital = capital
+            $reactions.answer("А мы вошли во вкус! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
+
     state: CapitalPattern
         q: * $Capital *
         script:
