@@ -117,11 +117,11 @@ theme: /
             $session.capital = capital
             $reactions.answer("Начинаю игру заново! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
     
-        state: CountryPattern
-            q: * $Country *
-            script:
-                $session.count++;
-                $reactions.answer("Это государство, а я спрашивал столицу!");
+    state: CountryPattern
+        q: * $Country *
+        script:
+            $session.count++;
+            $reactions.answer("Это государство, а я спрашивал столицу!");
     
     state: CapitalPattern
         q: * $Capital *
