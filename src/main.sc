@@ -79,7 +79,7 @@ theme: /
                 state: GetGPTResponse 
                     q: * $Capital *
                     script:
-                        $session.count--;
+                        //$session.count--;
                         var initialCapital = $parseTree._Capital.name
                         var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
                         var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
@@ -135,7 +135,7 @@ theme: /
         state: GetGPTResponse 
             q: * $Capital *
             script:
-                $session.count--;
+                //$session.count--;
                 var initialCapital = $parseTree._Capital.name
                 var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
                 var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
