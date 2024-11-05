@@ -40,6 +40,6 @@
             }
         </context>
         <q>Париж</q>
-        <a state = "/Do you want to start?/Yes/CheckCapital/GetGPTResponse"/>
+        <a state = "/Do you want to start?/Yes/CheckCapital/GetGPTResponse"|"/CapitalPattern/GetGPTResponse"/>
     </test-case> 
 </test>
