@@ -44,6 +44,7 @@ theme: /
             script:
                  var $originalPairs = $Pairs;
                  var randomPair = getRandomPair($Pairs);
+                 $session.correctAnswers = 1;
 
                  var index = randomPair['id'];
                  var state = randomPair['value']['name'];
@@ -55,7 +56,6 @@ theme: /
             state: CheckCapital
                 q: * $Capital *
                 script:
-                    $session.correctAnswers = 1;
                     if ($session.capital === $parseTree._Capital.name) {
                         $session.correctAnswers++;
                         
@@ -94,7 +94,6 @@ theme: /
     state: CapitalPattern
         q: * $Capital *
         script:
-            $session.correctAnswers = 1;
             if ($session.capital === $parseTree._Capital.name) {
                 $session.correctAnswers++;
                 if ($session.correctAnswers % 5 === 0) {
