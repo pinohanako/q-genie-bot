@@ -51,6 +51,7 @@ theme: /
                  var capital = randomPair['value']['capital'];
 
                  $session.capital = capital
+                 $session.state = state
                  $reactions.answer("Отлично! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
 
             state: CheckCapital
@@ -59,17 +60,21 @@ theme: /
                     go!: /Do you want to start?/Yes/CheckCapital/GetGPTResponse
                 else:
                 script:
-                    if ($session.capital === $parseTree._Capital.name) {
-                        $session.correctAnswers++;
-                        $session.count++;
-                        var newRandomPair = getRandomPair($Pairs);
-                        var newState = newRandomPair['value']['name'];
-                        var newCapital = newRandomPair['value']['capital'];
-                        $session.capital = newCapital
-                        $reactions.answer("Продолжим! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
+                    if ($session.state === $parseTree._Country.name & !"Ватикан") {
+                        $reactions.answer("Ой, целая страна это не город! А я спросил про столицу");
                     } else {
-                        $session.count++;
-                        $reactions.answer("Неверный ответ! Попробуй еще раз");
+                        if ($session.capital === $parseTree._Capital.name) {
+                            $session.correctAnswers++;
+                            $session.count++;
+                            var newRandomPair = getRandomPair($Pairs);
+                            var newState = newRandomPair['value']['name'];
+                            var newCapital = newRandomPair['value']['capital'];
+                            $session.capital = newCapital
+                            $reactions.answer("Продолжим! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
+                        } else {
+                            $session.count++;
+                            $reactions.answer("Неверный ответ! Попробуй еще раз");
+                        }
                     }
 
                 state: GetGPTResponse
@@ -123,6 +128,7 @@ theme: /
                 var newState = newRandomPair['value']['name'];
                 var newCapital = newRandomPair['value']['capital'];
                 $session.capital = newCapital
+                $session.state = newState
                 $reactions.answer("Продолжим! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
             } else {
                 $reactions.answer("Неа! Попробуй еще раз");
