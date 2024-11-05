@@ -85,7 +85,7 @@ theme: /
             a: Хорошо. Буду рад поиграть в следующий раз!
 
     state: StartAgain
-        q: * (еще раз|заново|повтор|старт) *
+        q: * (еще раз|заново|повтор|старт|еще|продолж*) *
         script:
             var randomPair = getRandomPair($Pairs);
             var index = randomPair['id'];
