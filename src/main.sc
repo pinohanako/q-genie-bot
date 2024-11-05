@@ -58,10 +58,8 @@ theme: /
             state: CountryMatch
                 q: * $Country *
                 script:
-                    if ($session.state == $parseTree._Country.name) {
-                        $session.count++;
-                        $reactions.answer("Это государство, а я спрашивал столицу!");
-                    }
+                    $session.count++;
+                    $reactions.answer("Это государство, а я спрашивал столицу!");
             
             state: CheckCapital
                 q: * $Capital *
@@ -117,15 +115,13 @@ theme: /
             $session.correctAnswers = 0;
 
             $session.capital = capital
-            $reactions.answer("А мы вошли во вкус! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
+            $reactions.answer("Начинаю игру заново! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
     
         state: CountryPattern
             q: * $Country *
             script:
-                if ($session.state == $parseTree._Country.name) {
-                    $session.count++;
-                    $reactions.answer("Это государство, а я спрашивал столицу!");
-                }
+                $session.count++;
+                $reactions.answer("Это государство, а я спрашивал столицу!");
     
     state: CapitalPattern
         q: * $Capital *
