@@ -59,7 +59,7 @@ theme: /
                 script:
                     $session.count++;
                     if ($session.count % 5 === 0) {
-                        go: GetGPTResplonse
+                        go: /Do you want to start?/Yes/CheckCapital/GetGPTResplonse
                     }
                     if ($session.capital === $parseTree._Capital.name) {
                         $session.correctAnswers++;
@@ -108,7 +108,7 @@ theme: /
         script:
             $session.count++;
             if ($session.count % 5 === 0) {
-                go: GetGPTResplonse
+                go: /CapitalPattern/GetGPTResplonse
             }
             if ($session.capital === $parseTree._Capital.name) {
                 $session.correctAnswers++;
