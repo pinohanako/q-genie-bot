@@ -84,6 +84,7 @@ theme: /
                     }
 
                 state: GetGPTResponse
+                    q: * $Capital *
                     script:
                         var initialCapital = $parseTree._Capital.name
                         var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
@@ -150,7 +151,8 @@ theme: /
                 $session.count++;
             }
             
-        state: GetGPTResponse 
+        state: GetGPTResponse
+            q: * $Capital *
             script:
                 var initialCapital = $parseTree._Capital.name
                 var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
