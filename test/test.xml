@@ -34,6 +34,11 @@
         <a state = "/NoMatch"/>
     </test-case> 
     <test-case id="8">
+        <q>/start</q>
+        <a>Привет! Давай поиграем. Я буду называть страну, а ты угадываешь столицу.</a>
+        <a>Начнем?</a>
+        <q>давай</q>
+        <a state = "/Do you want to start?/Yes"/>
         <context var="session">
             {
                 "count": "% 5 === 0"
