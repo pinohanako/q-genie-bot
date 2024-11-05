@@ -101,7 +101,6 @@ theme: /
         q: * (еще раз|заново|повтор|старт|продолж*|начн* заново) *
         script:
             var randomPair = getRandomPair($Pairs);
-            var index = randomPair['id'];
             var state = randomPair['value']['name'];
             var capital = randomPair['value']['capital'];
             $session.count = 0;
