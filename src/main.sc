@@ -29,6 +29,7 @@ patterns:
         };
 
 theme: /
+    
     state: Sstart
         q!: $regex</start>
         script:
@@ -53,7 +54,25 @@ theme: /
                  $session.capital = capital
                  $session.state = state
                  $reactions.answer("Отлично! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
-
+       
+            state: CountryCapitalMatch
+                q: * $Country *
+                script:
+                    if ($session.state == $session.capital) {
+                        $reactions.answer("Да, редкий случай, когда названия страны и ее столицы совпадают!!");
+                        $session.correctAnswers++;
+                        $session.count++;
+    
+                        var newRandomPair = getRandomPair($Pairs);
+                        var newState = newRandomPair['value']['name'];
+                        var newCapital = newRandomPair['value']['capital'];
+                        $session.capital = newCapital
+                        $reactions.answer("Продолжим! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
+                    } else if ($session.state == $parseTree._Country.name) {
+                        $session.count++;
+                        $reactions.answer("Это государство, а я спрашивал столицу!");
+                    }
+            
             state: CheckCapital
                 q: * $Capital *
                 if: $session.count % 5 === 0;
@@ -151,23 +170,6 @@ theme: /
                     $session.count++;
                     $reactions.answer("Неа! Попробуй еще раз");
                 }
-                
-    state: CountryCapitalMatch
-        q: * $Country *
-        script:
-            if ($session.state == $session.capital) {
-                $reactions.answer("Да, редкий случай, когда названия страны и ее столицы совпадают!!");
-                $session.correctAnswers++;
-    
-                var newRandomPair = getRandomPair($Pairs);
-                var newState = newRandomPair['value']['name'];
-                var newCapital = newRandomPair['value']['capital'];
-                $session.capital = newCapital
-                $reactions.answer("Продолжим! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
-            } else if ($session.state == $parseTree._Country.name) {
-                $session.count++;
-                $reactions.answer("Это государство, а я спрашивал столицу!");
-            }
 
     state: EndGame
         intent!: /end_game
