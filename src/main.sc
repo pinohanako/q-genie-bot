@@ -54,15 +54,6 @@ theme: /
                  $session.capital = capital
                  $session.state = state
                  $reactions.answer("Отлично! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
-            
-            state: CountryMatch
-                q: * $Country *
-                if: $session.state = $session.capital;
-                    go!: /Do you want to start?/Yes/CheckCapital/
-                else:
-                script:
-                    $session.count++;
-                    $reactions.answer('Это государство, а игра называется "угадай столицу"!');
                 
             state: CheckCapital
                 q: * $Capital *
@@ -120,15 +111,6 @@ theme: /
 
             $session.capital = capital
             $reactions.answer("Начинаю игру заново! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
-    
-    state: CountryPattern
-        q: * $Country *
-        if: $session.state = $session.capital;
-            go!: /CapitalPattern
-        else:
-        script:
-            $session.count++;
-            $reactions.answer('Это государство, а игра называется "угадай столицу"!');
                 
     state: CapitalPattern
         q: * $Capital *
