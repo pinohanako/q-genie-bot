@@ -43,12 +43,14 @@ theme: /
             q: * [думаю] (да|*можете|*можешь|надеюсь|хотелось бы|давай|начнем) *
             script:
                  var randomPair = getRandomPair($Pairs);
+                 var index = randomPair['id'];
                  var state = randomPair['value']['name'];
                  var capital = randomPair['value']['capital'];
+
                  $session.capital = capital
                  $reactions.answer("Отлично! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
-                 $Pairs.splice($Pairs.indexOf(randomPair), 1);
-            
+                 $Pairs.splice(index, 1);
+                 
             state: CheckCapital
                 q: * $Capital *
                 script:
