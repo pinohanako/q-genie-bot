@@ -79,6 +79,7 @@ theme: /
                 state: GetGPTResponse 
                     q: * $Capital *
                     script:
+                        $session.count--;
                         var initialCapital = $parseTree._Capital.name
                         var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
                         var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
@@ -106,13 +107,9 @@ theme: /
         q: * $Capital *
         script:
             $session.count++;
-                if ($session.count % 5 === 0) {
-                    var initialCapital = $parseTree._Capital.name
-                    var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
-                    var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
-                    var response = assistantResponse.choices[0].message.content;
-                    $reactions.answer(response);
-                }
+            if ($session.count % 5 === 0) {
+                go: GetGPTResplonse
+            }
             if ($session.capital === $parseTree._Capital.name) {
                 $session.correctAnswers++;
                 if ($session.correctAnswers % 5 === 0) {
@@ -135,6 +132,16 @@ theme: /
             } else {
                 $reactions.answer("Неа! Попробуй еще раз");
             }
+        state: GetGPTResponse 
+            q: * $Capital *
+            script:
+                $session.count--;
+                var initialCapital = $parseTree._Capital.name
+                var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
+                var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
+                var response = assistantResponse.choices[0].message.content;
+                $reactions.answer(response);
+            go!: /CapitalPattern
 
     state: EndGame
         intent!: /end_game
