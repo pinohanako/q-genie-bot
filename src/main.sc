@@ -33,14 +33,14 @@ theme: /
         q!: $regex</start>
         script:
             $jsapi.startSession();
-        a: Привет! Давай поиграем. Я буду называть страну, а ты угадываешь столицу.
+        a: Давай поиграем. Я буду называть страну, а ты угадываешь столицу.
         go!: /Do you want to start?
         
     state: Do you want to start?
-        a: Начнем?
+        a: Напиши хочешь, начать?
 
         state: Yes
-            q: * [думаю] (да|*можете|*можешь|надеюсь|хотелось бы|давай|начнем) *
+            q: * [думаю] (да|хочу|*можете|*можешь|надеюсь|хотелось бы|давай|начнем) *
             script:
                  var $originalPairs = $Pairs;
                  var randomPair = getRandomPair($Pairs);
@@ -99,7 +99,7 @@ theme: /
             a: Хорошо. Буду рад поиграть в следующий раз!
 
     state: StartAgain
-        q: * (еще раз|заново|повтор|старт|еще|продолж*|начн* заново) *
+        q: * (еще раз|заново|повтор|старт|продолж*|начн* заново) *
         script:
             var randomPair = getRandomPair($Pairs);
             var index = randomPair['id'];
