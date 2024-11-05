@@ -43,7 +43,6 @@ theme: /
             q: * [думаю] (да|*можете|*можешь|надеюсь|хотелось бы|давай|начн) *
             script:
                  var randomPair = getRandomPair($Pairs);
-                 globalRandomPair = randomPair;
                  var state = randomPair['value']['name'];
                  var capital = randomPair['value']['capital'];
                  $reactions.answer("Отлично! Какая столица у государства " + state + "? (Правильный ответ: " + capital + ")");
@@ -56,13 +55,13 @@ theme: /
         q: * $Capital *
         script:
             var correctAnswers = 0
-            var state = globalRandomPair['value']['name'];
-            var capital = globalRandomPair['value']['capital'];
             // Проверяем, содержит ли ответ только одну столицу
             if ($parseTree._Capital.name.split(" ").length === 1) {
                 if (capital === $parseTree._Capital.name) {
                     correctAnswers++;
                     var randomPair = getRandomPair($Pairs);
+                    var state = RandomPair['value']['name'];
+                    var capital = RandomPair['value']['capital'];
                     if (randomPair != 0) {
                         $reactions.answer("Какая столица у государства " + state + "? (Правильный ответ: " + capital + ")");
                     } else {
