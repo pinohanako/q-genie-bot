@@ -3,8 +3,8 @@ function getRandomPair(pairs) {
         return null;
     }
 
-    const randomIndex = Math.floor(Math.random() * pairs.length);
-    const pair = pairs[randomIndex];
+    var randomIndex = Math.floor(Math.random() * pairs.length);
+    var pair = pairs[randomIndex];
 
     // Сохраняем использованные пары
     usedPairs.push(pair);
