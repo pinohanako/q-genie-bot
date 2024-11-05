@@ -55,7 +55,7 @@ theme: /
                  $session.state = state
                  $reactions.answer("Отлично! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
             
-            state: CountryPattern
+            state: CountryMatch
                 q: * $Country *
                 if: $session.state = $session.capital;
                     go!: /CheckCapital
