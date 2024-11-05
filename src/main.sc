@@ -72,7 +72,6 @@ theme: /
                         $session.count++;
                         $reactions.answer("Неверный ответ! Попробуй еще раз");
                     }
-                }
 
                 state: GetGPTResponse
                     script:
