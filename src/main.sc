@@ -45,13 +45,13 @@ theme: /
                  var randomPair = getRandomPair($Pairs);
                  var state = randomPair['value']['name'];
                  var capital = randomPair['value']['capital'];
-                 var = capital
+                 var = $Capital
                  $reactions.answer("Отлично! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
             
             state: CheckCapital
                 q: * $Capital *
                 script:
-                    if (capital === $parseTree._Capital.name) {
+                    if ($Capital === $parseTree._Capital.name) {
                         correctAnswers += 1;
                         var newRandomPair = getRandomPair($Pairs);
                         if (newRandomPair) {
