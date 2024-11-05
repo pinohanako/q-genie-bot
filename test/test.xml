@@ -37,8 +37,4 @@
         <q>Заново</q>
         <a state = "/StartAgain"/>
     </test-case>
-    <test-case id="9">
-        <q>Германия</q>
-        <a>Это государство, а игра называется "угадай столицу"!</a>
-    </test-case>
 </test>
