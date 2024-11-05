@@ -55,23 +55,12 @@ theme: /
                  $session.state = state
                  $reactions.answer("Отлично! Какая столица государства " + state + "? (Правильный ответ: " + capital + ")");
        
-            state: CountryCapitalMatch
+            state: CountryMatch
                 q: * $Country *
                 script:
-                    if ($session.state == $session.capital) {
-                        $reactions.answer("Да, редкий случай, когда названия страны и ее столицы совпадают!!");
-                        $session.correctAnswers++;
-                        $session.count++;
-    
-                        var newRandomPair = getRandomPair($Pairs);
-                        var newState = newRandomPair['value']['name'];
-                        var newCapital = newRandomPair['value']['capital'];
-                        $session.capital = newCapital
-                        $reactions.answer("Продолжим! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
-                    } else if ($session.state == $parseTree._Country.name) {
+                    if ($session.state == $parseTree._Country.name) {
                         $session.count++;
                         $reactions.answer("Это государство, а я спрашивал столицу!");
-                    }
             
             state: CheckCapital
                 q: * $Capital *

@@ -45,6 +45,8 @@
       "text" : "останови игру"
     }, {
       "text" : "пауза"
+    }, {
+      "text" : "Соять"
     } ],
     "classificationRules" : {
       "refs" : [ ]
