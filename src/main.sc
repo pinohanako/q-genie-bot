@@ -46,7 +46,7 @@ theme: /
                  var $originalPairs = $Pairs;
                  var randomPair = getRandomPair($Pairs);
                  $session.correctAnswers = 0;
-                 $session.count = 0;
+                 $session.count = 1;
 
                  var state = randomPair['value']['name'];
                  var capital = randomPair['value']['capital'];
@@ -106,7 +106,7 @@ theme: /
             var randomPair = getRandomPair($Pairs);
             var state = randomPair['value']['name'];
             var capital = randomPair['value']['capital'];
-            $session.count = 0;
+            $session.count = 1;
             $session.correctAnswers = 0;
 
             $session.capital = capital
