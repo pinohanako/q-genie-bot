@@ -57,10 +57,15 @@ theme: /
                 
             state: CheckCapital
                 q: * $Capital *
-                if: $session.count % 5 === 0;
-                    go!: /Do you want to start?/Yes/CheckCapital/GetGPTResponse
-                else:
                 script:
+                    if ($session.count % 5 === 0) {
+                        var initialCapital = $parseTree._Capital.name
+                        var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
+                        var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
+                        var response = assistantResponse.choices[0].message.content;
+                        $reactions.answer(response);
+                    }
+                    
                     if ($session.capital === $parseTree._Capital.name) {
                         $session.correctAnswers++;
                         $session.count++;
@@ -73,28 +78,6 @@ theme: /
                         $session.count++;
                         $reactions.answer("Неверный ответ! Попробуй еще раз");
                     }
-
-                state: GetGPTResponse
-                    q: * $Capital *
-                    script:
-                        var initialCapital = $parseTree._Capital.name
-                        var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
-                        var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
-                        var response = assistantResponse.choices[0].message.content;
-                        $reactions.answer(response);
-                        
-                        if ($session.capital === $parseTree._Capital.name) {
-                            $session.correctAnswers++;
-                            $session.count++;
-                            var newRandomPair = getRandomPair($Pairs);
-                            var newState = newRandomPair['value']['name'];
-                            var newCapital = newRandomPair['value']['capital'];
-                            $session.capital = newCapital
-                            $reactions.answer("Продолжим! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
-                        } else {
-                            $session.count++;
-                            $reactions.answer("Неверный ответ! Попробуй еще раз");
-                        }
 
         state: No
             q: * [уже] (не надо|не хочу|не нужно|нет|не нач) [спасибо] *
@@ -114,10 +97,15 @@ theme: /
                 
     state: CapitalPattern
         q: * $Capital *
-        if: $session.count % 5 === 0;
-           go!: /CapitalPattern/GetGPTResponse
-        else:
         script:
+            if ($session.count % 5 === 0) {
+                var initialCapital = $parseTree._Capital.name
+                var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
+                var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
+                var response = assistantResponse.choices[0].message.content;
+                $reactions.answer(response);
+            }
+                
             if ($session.capital === $parseTree._Capital.name) {
                 $session.correctAnswers++;
                 $session.count++;
@@ -132,28 +120,6 @@ theme: /
                 $reactions.answer("Неа! Попробуй еще раз");
                 $session.count++;
             }
-            
-        state: GetGPTResponse
-            q: * $Capital *
-            script:
-                var initialCapital = $parseTree._Capital.name
-                var userMessage = "Скажи какой-то интересный короткий факт о столице " + initialCapital
-                var assistantResponse = $gpt.createChatCompletion([{ "role": "user", "content": userMessage }]);
-                var response = assistantResponse.choices[0].message.content;
-                $reactions.answer(response);
-                if ($session.capital === $parseTree._Capital.name) {
-                    $session.correctAnswers++;
-                    $session.count++;
-                
-                    var newRandomPair = getRandomPair($Pairs);
-                    var newState = newRandomPair['value']['name'];
-                    var newCapital = newRandomPair['value']['capital'];
-                    $session.capital = newCapital
-                    $reactions.answer("Продолжим! Какая столица государства " + newState + "? (Правильный ответ: " + newCapital + ")");
-                } else {
-                    $session.count++;
-                    $reactions.answer("Неа! Попробуй еще раз");
-                }
 
     state: EndGame
         intent!: /end_game
