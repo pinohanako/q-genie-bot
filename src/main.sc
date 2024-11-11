@@ -41,7 +41,7 @@ theme: /
         a: Напиши, хочешь начать?
 
         state: Yes
-            q: * [думаю] (да|хочу|*можете|*можешь|надеюсь|хотелось бы|давай|начнем) *
+            q: * [думаю] (да|хочу|*можете|*можешь|надеюсь|хотелось бы|давай|начнем|конечно) *
             script:
                  var $originalPairs = $Pairs;
                  var randomPair = getRandomPair($Pairs);
@@ -135,7 +135,7 @@ theme: /
         intent!: /пока
         a: Пока-пока
 
-    state: NoMatch
+    state: NoMatch || noContext = true
         event!: noMatch
         a: Я не понял. Вы сказали: {{$request.query}}
              
